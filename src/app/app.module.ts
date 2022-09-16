@@ -21,11 +21,10 @@ import { ToUpperCasePipe } from './pipes/to-upper-case.pipe';
 import { SideNavLinkComponent } from './layout/main/side-nav/side-nav-link/side-nav-link.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './pages/about/about.component';
-import { SignUpComponent } from './pages/sign-up/sign-up.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/Users/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { FormsModule } from '@angular/forms';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { LoginPageComponent } from './pages/Users/login-page/login-page.component';
 import { NewContactComponent } from './pages/contacts/new-contact/new-contact.component';
 import { ContactDetailsComponent } from './pages/contacts/contact-details/contact-details.component';
 import { EditContactComponent } from './pages/contacts/edit-contact/edit-contact.component';
@@ -63,7 +62,6 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     ContactComponent,
     AboutComponent,
     SignUpComponent,
-    SignInComponent,
     PageNotFoundComponent,
     LoginPageComponent,
     NewContactComponent,

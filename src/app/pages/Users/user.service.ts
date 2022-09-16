@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { signOut } from '@firebase/auth';
+import { GoogleAuthProvider, signOut } from '@firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +34,16 @@ export class UserService {
       .then((credentials) => {
         console.log(credentials);
         cb(credentials);
+      })
+      .catch(() => cb(null));
+  }
+
+  signupAndLoginWithGoogle(cb: Function) {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(this.auth, provider)
+      .then((data) => {
+        console.log('Logged successful with google');
+        cb(data);
       })
       .catch(() => cb(null));
   }

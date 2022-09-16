@@ -5,9 +5,9 @@ import { ContactDetailsComponent } from '../pages/contacts/contact-details/conta
 import { ContactsComponent } from '../pages/contacts/contacts.component';
 import { EditContactComponent } from '../pages/contacts/edit-contact/edit-contact.component';
 import { NewContactComponent } from '../pages/contacts/new-contact/new-contact.component';
-import { LoginPageComponent } from '../pages/login-page/login-page.component';
+import { LoginPageComponent } from '../pages/Users/login-page/login-page.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
-import { SignInComponent } from '../pages/sign-in/sign-in.component';
+import { SignUpComponent } from '../pages/Users/sign-up/sign-up.component';
 
 const routes: Routes = [
 { path:'',component: LoginPageComponent},
@@ -17,8 +17,8 @@ const routes: Routes = [
  { path:'contacts/edit-contact/:id',component: EditContactComponent},
  { path:'about',component: AboutComponent},
  { path:'login',component: LoginPageComponent},
+ { path:'signUp',component: SignUpComponent},
  { path:'signOut',component: ContactsComponent},
- { path:'signUp',component: SignInComponent},
  { path:'**',component: PageNotFoundComponent}
 
 
