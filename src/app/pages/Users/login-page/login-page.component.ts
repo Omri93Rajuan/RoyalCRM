@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
@@ -6,10 +6,9 @@ import { UserService } from '../user.service';
 @Component({
   selector: 'login-page',
   templateUrl: './login-page.component.html',
-  styles: [
-  ]
+  styles: [],
 })
-export class LoginPageComponent  {
+export class LoginPageComponent {
   error: boolean = false;
   counter: number = 0;
   threeFailedAttemptsToLogin: boolean = false;

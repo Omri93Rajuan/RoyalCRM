@@ -82,14 +82,16 @@
       {{ "submit" | titlecase }}
     </button>
 
-    <input
+    <div
       type="button"
       value="Signup With Google"
-      class="btn btn-outline-dark col-12 my-2"
+      class="btn  col-12 my-2"
       role="button"
       title="Login with google"
       (click)="signupWithGoogle()"
-    />
+    >
+      <i class="fa-brands fa-google display-5 text-success"></i>
+    </div>
 
     <div *ngIf="error" class="text-center my-2 text-danger">
       This user is already registered in the system
