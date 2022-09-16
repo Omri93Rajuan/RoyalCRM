@@ -1,0 +1,10 @@
+<div class="pt-2">
+    <button
+      *ngFor="let controller of controllers"
+      (click)="onChangeDisplayMode(controller.value)"
+      class="btn btn-outline-dark cursor m-1"
+    >
+      <i [class]="controller.icon"></i>
+    </button>
+  </div>
+  

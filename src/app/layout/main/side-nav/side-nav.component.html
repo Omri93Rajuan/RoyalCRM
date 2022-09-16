@@ -1,0 +1,21 @@
+
+
+
+
+<ul *ngIf='links.length;else noLinks' class="list-group ">
+    <side-nav-link *ngFor="let link of links"
+    [text]=link.text
+    [icon] =link.icon
+    [link] = link.link
+    
+    ></side-nav-link>
+</ul>
+<ng-template #noLinks>
+
+
+  
+<div>    {{
+    "Oops... it looks like there are no links to display at the moment"
+      | toUpperCase
+  }}</div>
+</ng-template>

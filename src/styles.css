@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cursor {
+    cursor: pointer;
+  }
+  .top-nav-active{
+    font-weight: bold;
+
+  }
+  .top-nav-active:hover{
+    border-left: 3px solid white;
+  }

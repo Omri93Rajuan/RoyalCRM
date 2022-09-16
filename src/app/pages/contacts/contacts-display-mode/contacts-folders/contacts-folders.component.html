@@ -1,0 +1,10 @@
+<div class="d-flex row px-0 mx-0">
+    <span
+      *ngFor="let contact of contacts"
+      class="cursor p-1 border rounded m-1 col-5 col-sm-4 col-md-3 col-xl-2"
+      [routerLink]="['contact-details',contact._id]" >
+      <i class="fas fa-user"></i>
+      {{ contact.firstName + " " + contact.lastName | titlecase }}</span
+    >
+  </div>
+  

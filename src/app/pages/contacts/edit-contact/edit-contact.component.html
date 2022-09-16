@@ -1,0 +1,18 @@
+<page-header
+  title="Edit contact"
+  subtitle="Hear you can edit your contact details"
+  icon="fas fa-user-edit"
+></page-header>
+
+<contact-form
+  *ngIf="contact; else noContact"
+  [contact]="contact"
+  (reset)="resetForm()"
+  (submit)="onSubmit($event)"
+></contact-form>
+
+<ng-template #noContact>{{
+  "Oops it looks like there is no contact with this ID in the database"
+    | toUpperCase
+
+}}</ng-template>

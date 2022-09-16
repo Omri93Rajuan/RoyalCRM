@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "royal-crm-rajuan": {
+      "hosting": {
+        "royal-crm": [
+          "royal-crm-rajuan"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "royal-crm-rajuan"
+  }
+}

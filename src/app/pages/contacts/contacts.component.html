@@ -1,0 +1,56 @@
+<!-- כותרות  -->
+<page-header
+  title="contacts Page"
+  subTitle="this is the contacts page"
+  icon="fa-solid fa-address-card"
+></page-header>
+
+<div class="mb-2">
+  <a
+    routerLink="new-contact"
+    class="btn btn-outline-dark"
+    title="add new contact"
+    role="button"
+    >{{ "add contact" | titlecase }}</a
+  >
+</div>
+<display-mode-controllers
+[controllers]="controllers"
+(onChangeDisplay)="onChangeDisplay($event)"
+></display-mode-controllers>
+
+<search-bar
+  *ngIf="contacts"
+  [categories]="categories"
+  [array]="contactsRowData"
+  (onArrayFiltered)="onSearch($event)"
+></search-bar>
+
+<!-- טבלת אנשי קשר -->
+<div class="container text-center">
+  <div *ngIf="contacts && contacts.length; else noContact">
+    <contacts-table
+      *ngIf="display === 'table'"
+      [contacts]="contacts"
+      (onDeleteContact)="deleteContact($event)"
+    ></contacts-table>
+
+  <contacts-folders
+  [contacts]="contacts"
+  *ngIf="display === 'folder'"
+></contacts-folders>
+
+<contacts-cards
+[contacts]="contacts"
+*ngIf="display === 'card'"
+></contacts-cards>
+</div>
+
+<ng-template #noContact>
+  <div class="display-5">
+    {{
+      "Oops... it looks like there are no database users to display at the moment"
+        | toUpperCase
+    }}
+  </div>
+</ng-template>

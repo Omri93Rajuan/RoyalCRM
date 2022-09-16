@@ -1,0 +1,320 @@
+<form
+  #customerForm="ngForm"
+  autocomplete="off"
+  (ngSubmit)="onSubmit(customerForm)"
+  class="form border rounded p-2"
+>
+  <!-- זיהוי -->
+  <div class="center">
+    <div class="col-md-10">
+      <h6>{{ "Identification" | toUpperCase }}</h6>
+      <hr class="m-0" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-2">
+    <div class="col-12 col-md-5 mb-2 form-group">
+      <label for="firstName"
+        ><span class="text-danger">*</span>
+        {{ "first name" | titlecase }}</label
+      ><input
+        id="firstName"
+        [(ngModel)]="contact.firstName"
+        name="firstName"
+        type="text"
+        class="form-control"
+        required
+        minlength="2"
+        #firstNameField="ngModel"
+        [ngClass]="{
+          'is-invalid': firstNameField.invalid && firstNameField.touched,
+          'is-valid': firstNameField.valid && firstNameField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "first name mast be at list two characters" | toUpperCase
+      }}</span>
+    </div>
+
+    <div class="col-md-5 mb-2 form-group">
+      <label for="zip"
+        ><span class="text-danger">*</span> {{ "last name" | titlecase }}</label
+      ><input
+        [(ngModel)]="contact.lastName"
+        #lastNameField="ngModel"
+        name="lastName"
+        type="text"
+        class="form-control"
+        required
+        minlength="2"
+        [ngClass]="{
+          'is-invalid': lastNameField.invalid && lastNameField.touched,
+          'is-valid': lastNameField.valid && lastNameField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "last name mast be at list two characters" | toUpperCase
+      }}</span>
+    </div>
+  </div>
+
+  <!-- דרכי התקשרות -->
+  <div class="center">
+    <div class="col-md-10">
+      <h6>{{ "means of communication" | toUpperCase }}</h6>
+      <hr class="m-0" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-5 mb-2 form-group">
+      <label for="email"
+        ><span class="text-danger">*</span> {{ "email" | titlecase }}</label
+      ><input
+        [(ngModel)]="contact.email"
+        #emailField="ngModel"
+        name="email"
+        type="email"
+        class="form-control"
+        required
+        minlength="6"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        [ngClass]="{
+          'is-invalid': emailField.invalid && emailField.touched,
+          'is-valid': emailField.valid && emailField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "please insert a valid email" | toUpperCase
+      }}</span>
+    </div>
+    <div class="col-md-5 mb-2 form-group">
+      <label for="phone"
+        ><span class="text-danger">*</span> {{ "phone" | titlecase }}</label
+      ><input
+        [(ngModel)]="contact.phone"
+        #phoneField="ngModel"
+        name="phone"
+        pattern="0[0-9]{1,2}\-?\s?[0-9]{3}\s?[0-9]{4}"
+        type="tel"
+        class="form-control"
+        required
+        minlength="9"
+        [ngClass]="{
+          'is-invalid': phoneField.invalid && phoneField.touched,
+          'is-valid': phoneField.valid && phoneField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "please insert a valid phone number" | toUpperCase
+      }}</span>
+    </div>
+    <div class="col-md-5 mb-2 form-group">
+      <label for="birthday"
+        ><span class="text-danger">*</span> {{ "birthday" | titlecase }}</label
+      ><input
+        [(ngModel)]="contact.birthday"
+        #birthdayField="ngModel"
+        name="birthday"
+        pattern=""
+        type="date"
+        class="form-control"
+        required
+        [ngClass]="{
+          'is-invalid': birthdayField.invalid && birthdayField.touched,
+          'is-valid': birthdayField.valid && birthdayField.touched
+        }"
+      />
+      <span class="invalid-feedback">{{
+        "please insert a valid birthday" | toUpperCase
+      }}</span>
+    </div>
+  </div>
+
+  <!-- כתובת -->
+  <div class="center">
+    <div class="col-md-10">
+      <h6>{{ "Address" | toUpperCase }}</h6>
+      <hr class="m-0" />
+    </div>
+  </div>
+
+  <div ngModelGroup="address">
+    <div class="row justify-content-center mt-2">
+      <div class="col-md-5 mb-2 form-group">
+        <label for="state"
+          ><span class="text-danger"></span> {{ "state" | titlecase }}</label
+        ><input
+          [(ngModel)]="contact.address.state"
+          id="state"
+          #stateField="ngModel"
+          name="state"
+          type="text"
+          class="form-control"
+          minlength="2"
+          [ngClass]="{
+            'is-invalid': stateField.invalid && stateField.touched,
+            'is-valid': stateField.valid && stateField.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "state mast be at list two characters" | toUpperCase
+        }}</span>
+      </div>
+      <div class="col-md-5 mb-2 form-group">
+        <label for="country"
+          ><span class="text-danger">*</span> {{ "country" | titlecase }}</label
+        ><input
+          [(ngModel)]="contact.address.country"
+          #countryField="ngModel"
+          name="country"
+          type="text"
+          class="form-control"
+          required
+          minlength="2"
+          [ngClass]="{
+            'is-invalid': countryField.invalid && countryField.touched,
+            'is-valid': countryField.valid && countryField.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "country mast be at list two characters" | toUpperCase
+        }}</span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+      <div class="col-md-5 mb-2 form-group">
+        <label for="city"
+          ><span class="text-danger">*</span> {{ "city" | titlecase }}</label
+        ><input
+          [(ngModel)]="contact.address.city"
+          name="city"
+          type="text"
+          class="form-control"
+          required
+          minlength="2"
+          #cityField="ngModel"
+          [ngClass]="{
+            'is-invalid': cityField.invalid && cityField.touched,
+            'is-valid': cityField.valid && cityField.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "city mast be at list two characters" | toUpperCase
+        }}</span>
+      </div>
+      <div class="col-md-5 mb-2 form-group">
+        <label for="street"
+          ><span class="text-danger">*</span> {{ "street" | titlecase }}</label
+        ><input
+          [(ngModel)]="contact.address.street"
+          name="street"
+          type="text"
+          class="form-control"
+          required
+          minlength="2"
+          #streetField="ngModel"
+          [ngClass]="{
+            'is-invalid': streetField.invalid && streetField.touched,
+            'is-valid': streetField.valid && streetField.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "street mast be at list two characters" | toUpperCase
+        }}</span>
+      </div>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+      <div class="col-md-5 mb-2 form-group">
+        <label for="houseNumber"
+          ><span class="text-danger">*</span>
+          {{ "houseNumber" | titlecase }}</label
+        ><input
+          [(ngModel)]="contact.address.houseNumber"
+          name="houseNumber"
+          type="number"
+          class="form-control"
+          required
+          minlength="2"
+          #houseNumberField="ngModel"
+          [ngClass]="{
+            'is-invalid': houseNumberField.invalid && houseNumberField.touched,
+            'is-valid': houseNumberField.valid && houseNumberField.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "house Number mast be at list two characters" | toUpperCase
+        }}</span>
+      </div>
+      <div class="col-md-5 mb-2 form-group">
+        <label for="zip"
+          ><span class="text-danger"></span> {{ "zip" | titlecase }}</label
+        ><input
+          [(ngModel)]="contact.address.zip"
+          name="zip"
+          type="text"
+          class="form-control"
+          minlength="2"
+          #zipField="ngModel"
+          [ngClass]="{
+            'is-invalid': zipField.invalid && zipField.touched,
+            'is-valid': zipField.valid && zipField.touched
+          }"
+        />
+        <span class="invalid-feedback">{{
+          "zip mast be at list two characters" | toUpperCase
+        }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- אחר -->
+  <div class="center">
+    <div class="col-md-10">
+      <h6>{{ "other info" | toUpperCase }}</h6>
+      <hr class="m-0" />
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-10 mb-2">
+      <label for="notes">{{ "notes" | titlecase }}</label>
+      <textarea
+        [(ngModel)]="contact.notes"
+        name="notes"
+        class="form-control"
+        cols="30"
+        rows="5"
+        #notesField="ngModel"
+      ></textarea>
+    </div>
+  </div>
+  <div class="p-3 text-center">
+    <a
+      routerLink="/contacts"
+      class="btn btn-danger ms-3"
+      role="button"
+      title="cancel"
+      >{{ "cancel" | titlecase }}</a
+    >
+
+    <input
+      type="button"
+      (click)="resetForm(customerForm)"
+      class="btn btn-secondary ms-3"
+      value="{{ 'reset' | titlecase }}"
+      role="button"
+      title="Reset form"
+    />
+
+    <button
+      type="submit"
+      class="btn btn-success ms-3"
+      [disabled]="customerForm.form.invalid"
+    >
+      {{ "add customer" | titlecase }}
+    </button>
+  </div>
+</form>
