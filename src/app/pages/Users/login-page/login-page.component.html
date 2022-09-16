@@ -1,17 +1,18 @@
 <page-header
-title="login"
-subTitle="please fill the form fields and login"
-icon="fa solid fa-sign-in">
-
-</page-header>
+  title="login"
+  subtitle="please fill the form fields and login or login with google"
+  icon="fa-solid fa-sign-in
+  "
+  bgColor="alert-info rounded-3 p-2 m-2"
+></page-header>
 
 <div class="center mt-4">
   <form
     #loginForm="ngForm"
-    (ngSubmit)="onSumbit(loginForm)"
-    class="col-12 col-md-6 col-xl-4 p-4 alert-success rounded"
+    (ngSubmit)="onSubmit(loginForm)"
+    class="col-12 col-md-6 col-xl-4 p-4 alert-info rounded"
   >
-    <div class="form-group mb-2">
+    <div class="form-group mb-2" *ngIf="!threeFailedAttemptsToLogin">
       <label for="email">{{ "email" | titlecase }}</label>
       <input
         ngModel
@@ -34,7 +35,7 @@ icon="fa solid fa-sign-in">
       }}</span>
     </div>
 
-    <div class="form-group mb-2">
+    <div class="form-group mb-2" *ngIf="!threeFailedAttemptsToLogin">
       <label for="password">{{ "password" | titlecase }}</label>
       <input
         ngModel
@@ -57,15 +58,39 @@ icon="fa solid fa-sign-in">
       }}</span>
     </div>
 
+    <div class="col-12 mb-2 text-center">
+      Did not sign up yet?
+      <a routerLink="/signup" class="fw-bold">Click hear...</a>
+    </div>
+
     <input
-      (click)="onResetForm(loginForm)"
+      *ngIf="!threeFailedAttemptsToLogin"
       type="button"
+      (click)="resetForm(loginForm)"
       value="Reset"
       class="btn btn-danger col-12 mb-2"
     />
 
-    <button [disabled]="loginForm.invalid" 
-    type="submit" class="col-12 btn btn-success"
-    >Submit</button>
+    <button
+      *ngIf="!threeFailedAttemptsToLogin"
+      [disabled]="loginForm.form.invalid"
+      type="submit"
+      class="col-12 btn btn-success"
+    >
+      {{ "submit" | titlecase }}
+    </button>
+
+    <input
+      type="button"
+      value="Google"
+      class="btn btn-outline-dark col-12 my-2"
+      role="button"
+      title="Login with google"
+      (click)="loginWithGoogle()"
+    />
+
+    <div *ngIf="error" class="text-danger mt-2 text-center">
+      The username or password is incorrect!
+    </div>
   </form>
 </div>

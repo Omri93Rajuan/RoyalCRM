@@ -28,7 +28,7 @@ export class SignUpComponent {
         setTimeout(() => {
           form.resetForm();
           this.error = false;
-          this.router.navigate(['']);
+          this.router.navigate(['\login']);
         }, 4000);
       });
     }

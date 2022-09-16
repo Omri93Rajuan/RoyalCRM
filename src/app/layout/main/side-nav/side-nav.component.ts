@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Link } from './link-interface';
+import {SideNavLink } from './link-interface';
 
 @Component({
   selector: 'side-nav',
@@ -7,20 +7,8 @@ import { Link } from './link-interface';
   styles: [],
 })
 export class SideNavComponent {
-  links: Array<Link> = [];
-
-  constructor() {
-    this.links.push(
-      {
-        link: '/costumer',
-        icon: 'fa-solid fa-democrat',
-        text: '  customer',
-      },
-      {
-        link: '/contacts',
-        icon: 'fa-solid fa-address-card',
-        text: '  contacts',
-      }
-    );
-  }
+  links: SideNavLink[] = [
+    { icon: 'fas fa-users', link: 'customers', text: 'customers' },
+    { icon: 'fas fa-address-book', link: 'contacts', text: 'contacts' },
+  ];
 }

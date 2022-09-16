@@ -4,10 +4,10 @@
         <th>Number</th>
         <th>First name</th>
         <th>Last name</th>
-        <th>Email</th>
-        <th>Phone</th>
+        <th class="d-none d-md-table-cell">Email</th>
+        <th class="d-none d-md-table-cell">Phone</th>
         <th>Age</th>
-        <th>Country</th>
+        <th class="d-none d-md-table-cell">Country</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
@@ -19,10 +19,10 @@
         <td>{{ i + 1 }}</td>
         <td>{{ contact.firstName | titlecase }}</td>
         <td>{{ contact.lastName | titlecase }}</td>
-        <td>{{ contact.email }}</td>
-        <td>{{ contact.phone }}</td>
+        <td class="d-none d-md-table-cell">{{ contact.email }}</td>
+        <td class="d-none d-md-table-cell">{{ contact.phone }}</td>
         <td>{{ contact.birthday | age}}</td>
-        <td>{{ contact.address.country | titlecase }}</td>
+        <td class="d-none d-md-table-cell">{{ contact.address.country | titlecase }}</td>
         <td>  <button class="btn btn-outline-dark"
           [routerLink]="['edit-contact', contact._id]">
             <i class="fas fa-pen"></i>

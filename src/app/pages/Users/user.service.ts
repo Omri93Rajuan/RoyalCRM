@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
+import {
+  GoogleAuthProvider,
+  signOut,
+  Auth,
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { GoogleAuthProvider, signOut } from '@firebase/auth';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-
   constructor(private auth: Auth, private router: Router) {}
 
   signupWithEmailAndPassword(user: Signup, cb: Function) {
@@ -15,7 +21,6 @@ export class UserService {
     createUserWithEmailAndPassword(this.auth, email, password)
       .then((credentials) => {
         cb(credentials);
-        console.log('User signup with email & password successfuly!');
       })
       .catch(() => cb(null));
   }
@@ -23,7 +28,7 @@ export class UserService {
   logout() {
     signOut(this.auth)
       .then(() => {
-        console.log('User logged out!');
+        return this.router.navigate(['/login']);
       })
       .catch((error) => console.log(error));
   }
@@ -46,6 +51,10 @@ export class UserService {
         cb(data);
       })
       .catch(() => cb(null));
+  }
+
+  getUserStatus(cb: Function) {
+    return onAuthStateChanged(this.auth, (user) => cb(user));
   }
 }
 
