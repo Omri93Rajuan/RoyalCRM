@@ -40,6 +40,10 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { CustomersPageComponent } from './pages/customers/customers-page/customers-page.component';
+import { CustomersFoldersComponent } from './pages/customers/customers-display-mode/customers-folders/customers-folders.component';
+import { CustomersTableComponent } from './pages/customers/customers-display-mode/customers-table/customers-table.component';
+import { CustomerFormComponent } from './pages/customers/customer-form/customer-form.component';
+import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +80,10 @@ import { CustomersPageComponent } from './pages/customers/customers-page/custome
     DisplayModeControllersComponent,
     ContactsCardsComponent,
     CustomersPageComponent,
+    CustomersFoldersComponent,
+    CustomersTableComponent,
+    CustomerFormComponent,
+    EditCustomerComponent,
   ],
   imports: [
     BrowserModule,

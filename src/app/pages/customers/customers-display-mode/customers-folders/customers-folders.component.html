@@ -1,0 +1,10 @@
+<div class="d-flex row px-0 mx-0">
+    <span
+      *ngFor="let customer of customers"
+      class="cursor p-1 border rounded m-1 col-5 col-sm-4 col-md-3 col-xl-2"
+      [routerLink]="['customer-details', customer._id]"
+      ><i class="fas fa-user"></i>
+      {{ customer.firstName + " " + customer.lastName | titlecase }}</span
+    >
+  </div>
+  

@@ -1,0 +1,23 @@
+<page-header
+  title="Edit customer"
+  subtitle="Hear you can edit your customer details"
+  icon="fas fa-user-edit"
+></page-header>
+
+<div *ngIf="dataReceived; else loader">
+  <customer-form
+    *ngIf="customer; else noCustomer"
+    [customer]="customer"
+    (reset)="resetForm()"
+    (submit)="onSubmit($event)"
+  ></customer-form>
+
+  <ng-template #noCustomer>{{
+    "Oops it looks like there is no customer with this ID in the database"
+      | toUpperCase
+  }}</ng-template>
+</div>
+
+<ng-template #loader>
+  <!-- <spinner-loader></spinner-loader> -->
+</ng-template>

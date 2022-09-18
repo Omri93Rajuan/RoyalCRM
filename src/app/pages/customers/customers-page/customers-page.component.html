@@ -44,11 +44,15 @@
 
   <ng-template #noCustomers>
     <div class="p-2">
-      {{ "no Customers where found in the database" | textCapital }}
+      {{ "no Customers where found in the database" | toUpperCase }}
     </div>
   </ng-template>
 </div>
 
 <ng-template #loader>
-  <spinner-loader></spinner-loader>
-</ng-template>
+    <div class="display-5">
+        {{
+          "Oops... it looks like there are no database users to display at the moment"
+            | toUpperCase
+        }}
+      </div></ng-template>
