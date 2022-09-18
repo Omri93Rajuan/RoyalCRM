@@ -1,0 +1,54 @@
+<page-header
+  title="customers"
+  subtitle="this is the Costumers page"
+  icon="fas fa-users"
+>
+</page-header>
+
+<div *ngIf="dataReceived; else loader">
+  <div class="d-flex justify-content-between">
+    <div class="my-2">
+      <a
+        routerLink="new-customer"
+        class="btn btn-outline-dark"
+        title="Add new customer"
+        ><i class="fa fa-plus-circle"></i> {{ "add customer" | titlecase }}</a
+      >
+    </div>
+
+    <display-mode-controllers
+      [controllers]="controllers"
+      (onChangeDisplay)="onChangeDisplay($event)"
+    ></display-mode-controllers>
+  </div>
+
+  <search-bar
+    *ngIf="customers && customers.length"
+    [categories]="categories"
+    [array]="customersRowData"
+    (onArrayFiltered)="onSearch($event)"
+  ></search-bar>
+
+  <div *ngIf="customers && customers.length; else noCustomers">
+    <customers-table
+      *ngIf="display === 'table'"
+      [customers]="customers"
+      (onDeleteCustomer)="deleteCustomer($event)"
+    ></customers-table>
+
+    <customers-folders
+      [customers]="customers"
+      *ngIf="display === 'folder'"
+    ></customers-folders>
+  </div>
+
+  <ng-template #noCustomers>
+    <div class="p-2">
+      {{ "no Customers where found in the database" | textCapital }}
+    </div>
+  </ng-template>
+</div>
+
+<ng-template #loader>
+  <spinner-loader></spinner-loader>
+</ng-template>
