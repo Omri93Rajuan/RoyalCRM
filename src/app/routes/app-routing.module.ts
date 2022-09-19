@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutComponent } from '../pages/about/about.component';
 import { ContactDetailsComponent } from '../pages/contacts/contact-details/contact-details.component';
-import { ContactsComponent } from '../pages/contacts/contacts.component';
+import { ContactsComponent } from '../pages/contacts/contacts-page/contacts.component';
 import { EditContactComponent } from '../pages/contacts/edit-contact/edit-contact.component';
 import { NewContactComponent } from '../pages/contacts/new-contact/new-contact.component';
 import { LoginPageComponent } from '../pages/Users/login-page/login-page.component';

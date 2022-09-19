@@ -1,5 +1,5 @@
 import { Component, Input} from '@angular/core';
-import { Contact } from '../../contacts-interface';
+import { Contact } from '../../contacts-page/contacts-interface';
 
 @Component({
   selector: 'contacts-cards',

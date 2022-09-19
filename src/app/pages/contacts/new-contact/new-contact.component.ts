@@ -4,7 +4,7 @@ import { CollectionReference, DocumentData } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { collection, Firestore, SnapshotMetadata } from '@firebase/firestore';
-import { Contact } from '../contacts-interface';
+import { Contact } from '../contacts-page/contacts-interface';
 import { ContactsService } from '../contacts.service';
 
 @Component({

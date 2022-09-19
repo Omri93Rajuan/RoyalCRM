@@ -15,7 +15,7 @@ import {
 } from '@angular/fire/firestore';
 import { async } from '@firebase/util';
 import { concat } from 'rxjs';
-import { Contact } from './contacts-interface';
+import { Contact } from './contacts-page/contacts-interface';
 
 @Injectable({
   providedIn: 'root',

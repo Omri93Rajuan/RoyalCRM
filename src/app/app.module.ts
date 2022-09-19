@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './routes/app-routing.module';
 import { AppComponent } from './root/app.component';
-import { ContactsComponent } from './pages/contacts/contacts.component';
+import { ContactsComponent } from './pages/contacts/contacts-page/contacts.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { MainComponent } from './layout/main/main.component';
 import { FooterComponent } from './layout/footer/footer.component';

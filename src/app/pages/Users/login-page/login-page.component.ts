@@ -21,7 +21,7 @@ export class LoginPageComponent {
       this.US.loginWithEmailAndPassword(value, (user: any): any => {
         if (user) {
           form.resetForm();
-          return this.router.navigate(['/contacts']);
+          return this.router.navigate(['/customers']);
         }
 
         this.error = true;
@@ -47,7 +47,7 @@ export class LoginPageComponent {
 
   loginWithGoogle() {
     this.US.signupAndLoginWithGoogle((user: any): any => {
-      if (user) return this.router.navigate(['/contacts']);
+      if (user) return this.router.navigate(['/customers']);
     });
   }
 
@@ -57,7 +57,7 @@ export class LoginPageComponent {
 
   ngOnInit() {
     this.US.getUserStatus((user: any) => {
-      if (user) this.router.navigate(['/contacts']);
+      if (user) this.router.navigate(['/customers']);
     });
   }
 }

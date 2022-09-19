@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Contact } from '../contacts-interface';
+import { Contact } from '../contacts-page/contacts-interface';
 
 @Component({
   selector: 'contact-form',

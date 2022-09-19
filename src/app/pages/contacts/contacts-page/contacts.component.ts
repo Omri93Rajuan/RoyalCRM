@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Controller } from 'src/app/components/display-mode-controllers/controllerts';
 import { Category } from 'src/app/components/search-bar/categoty';
 import { Contact } from './contacts-interface';
-import { ContactsService } from './contacts.service';
+import { ContactsService } from '../contacts.service';
 
 
 @Component({
