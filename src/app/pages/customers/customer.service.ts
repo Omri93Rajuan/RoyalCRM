@@ -23,6 +23,7 @@ export class CustomerService {
           ...customer.data(),
           _id: customer.id,
         });
+        
       });
     });
     return cb(customers, unsubscribeGetAll);

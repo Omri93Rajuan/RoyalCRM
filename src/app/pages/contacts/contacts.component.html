@@ -1,11 +1,12 @@
 <!-- כותרות  -->
 <page-header
-  title="contacts Page"
+  title="contacts"
   subTitle="this is the contacts page"
   icon="fa-solid fa-address-card"
 ></page-header>
-
-<div class="mb-2">
+<!-- <div *ngIf="dataReceived; else loader"> -->
+  <div class="d-flex justify-content-between">
+<div class="my-2">
   <a
     routerLink="new-contact"
     class="btn btn-outline-dark"
@@ -18,16 +19,16 @@
 [controllers]="controllers"
 (onChangeDisplay)="onChangeDisplay($event)"
 ></display-mode-controllers>
+</div>
 
 <search-bar
-  *ngIf="contacts"
+  *ngIf="contacts && contacts.length"
   [categories]="categories"
   [array]="contactsRowData"
   (onArrayFiltered)="onSearch($event)"
 ></search-bar>
 
 <!-- טבלת אנשי קשר -->
-<div class="container text-center">
   <div *ngIf="contacts && contacts.length; else noContact">
     <contacts-table
       *ngIf="display === 'table'"
@@ -53,4 +54,5 @@
         | toUpperCase
     }}
   </div>
+
 </ng-template>

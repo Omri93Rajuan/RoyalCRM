@@ -8,6 +8,10 @@ import { NewContactComponent } from '../pages/contacts/new-contact/new-contact.c
 import { LoginPageComponent } from '../pages/Users/login-page/login-page.component';
 import { PageNotFoundComponent } from '../pages/page-not-found/page-not-found.component';
 import { SignUpComponent } from '../pages/Users/sign-up/sign-up.component';
+import { CustomersPageComponent } from '../pages/customers/customers-page/customers-page.component';
+import { NewCustomerComponent } from '../pages/customers/new-customer/new-customer.component';
+import { CustomerDetailsComponent } from '../pages/customers/customer-details/customer-details.component';
+import { EditCustomerComponent } from '../pages/customers/edit-customer/edit-customer.component';
 
 const routes: Routes = [
 { path:'',component: LoginPageComponent},
@@ -15,6 +19,10 @@ const routes: Routes = [
  { path:'contacts/new-contact',component: NewContactComponent},
  { path:'contacts/contact-details/:id',component: ContactDetailsComponent},
  { path:'contacts/edit-contact/:id',component: EditContactComponent},
+ { path:'customers',component: CustomersPageComponent},
+ { path:'customers/new-customer',component: NewCustomerComponent},
+ { path:'customers/customer-details/:id',component: CustomerDetailsComponent},
+ { path:'customers/edit-customer/:id',component: EditCustomerComponent},
  { path:'about',component: AboutComponent},
  { path:'login',component: LoginPageComponent},
  { path:'signUp',component: SignUpComponent},

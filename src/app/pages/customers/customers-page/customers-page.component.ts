@@ -22,6 +22,8 @@ export class CustomersPageComponent implements OnInit, OnDestroy {
   controllers: Array<Controller> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
+    { icon:"fas fa-id-card-alt", value: 'card' }
+
   ];
   display: string = 'table';
   dataReceived: boolean = false;
@@ -47,7 +49,7 @@ export class CustomersPageComponent implements OnInit, OnDestroy {
       this.customersRowData = customers;
       this.customers = this.customersRowData;
       this.dataReceived = true;
-      this.unsubscribeGetAll = unsubscribeGetAll;
+      // this.unsubscribeGetAll = unsubscribeGetAll;
     });
   }
 

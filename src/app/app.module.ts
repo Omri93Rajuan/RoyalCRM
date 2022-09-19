@@ -44,6 +44,9 @@ import { CustomersFoldersComponent } from './pages/customers/customers-display-m
 import { CustomersTableComponent } from './pages/customers/customers-display-mode/customers-table/customers-table.component';
 import { CustomerFormComponent } from './pages/customers/customer-form/customer-form.component';
 import { EditCustomerComponent } from './pages/customers/edit-customer/edit-customer.component';
+import { NewCustomerComponent } from './pages/customers/new-customer/new-customer.component';
+import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
+import { CustomersCardsComponent } from './pages/customers/customers-display-mode/customers-cards/customers-cards.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +87,9 @@ import { EditCustomerComponent } from './pages/customers/edit-customer/edit-cust
     CustomersTableComponent,
     CustomerFormComponent,
     EditCustomerComponent,
+    NewCustomerComponent,
+    CustomerDetailsComponent,
+    CustomersCardsComponent,
   ],
   imports: [
     BrowserModule,

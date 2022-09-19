@@ -1,17 +1,18 @@
 <page-header
   title="customers"
-  subtitle="this is the Costumers page"
+  subTitle="this is the Costumers page"
   icon="fas fa-users"
 >
 </page-header>
 
-<div *ngIf="dataReceived; else loader">
+<!-- <div *ngIf="dataReceived; else loader"> -->
   <div class="d-flex justify-content-between">
     <div class="my-2">
       <a
         routerLink="new-customer"
         class="btn btn-outline-dark"
         title="Add new customer"
+        role="button"
         ><i class="fa fa-plus-circle"></i> {{ "add customer" | titlecase }}</a
       >
     </div>
@@ -40,19 +41,28 @@
       [customers]="customers"
       *ngIf="display === 'folder'"
     ></customers-folders>
+    
+    <customers-cards
+      [customers]="customers"
+      *ngIf="display === 'card'"
+    ></customers-cards>
   </div>
 
   <ng-template #noCustomers>
-    <div class="p-2">
-      {{ "no Customers where found in the database" | toUpperCase }}
+    <div class="display-5">
+      {{
+        "Oops... it looks like there are no database Customers to display at the moment"
+          | toUpperCase
+      }}
     </div>
   </ng-template>
-</div>
+<!-- </div> -->
 
 <ng-template #loader>
-    <div class="display-5">
-        {{
-          "Oops... it looks like there are no database users to display at the moment"
-            | toUpperCase
-        }}
-      </div></ng-template>
+  <div class="display-5">
+    {{
+      "Oops... it looks like there are no database users to display at the moment"
+        | toUpperCase
+    }}
+  </div></ng-template
+>
