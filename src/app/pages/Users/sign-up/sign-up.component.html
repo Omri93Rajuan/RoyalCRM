@@ -63,7 +63,7 @@
 
     <div class="col-12 mb-2 text-center">
       You are already registered?
-      <a routerLink="" class="fw-bold">Click hear...</a>
+      <a routerLink="" class="fw-bold">Click here...</a>
     </div>
 
     <input
@@ -90,7 +90,7 @@
       title="Login with google"
       (click)="signupWithGoogle()"
     >
-      <i class="fa-brands fa-google display-5 text-success"></i>
+    <img class="img-responsive" src={{googleLogoImage}} alt="" width="50">
     </div>
 
     <div *ngIf="error" class="text-center my-2 text-danger">

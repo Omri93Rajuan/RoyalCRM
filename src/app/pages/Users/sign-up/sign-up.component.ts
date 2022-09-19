@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
   styleUrls: []
 })
 export class SignUpComponent {
-
+  googleLogoImage:any = "/assets/google-logo.png";
   error: boolean = false;
 
   constructor(private US: UserService, private router: Router) {}

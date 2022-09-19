@@ -9,6 +9,7 @@ import { UserService } from '../user.service';
   styles: [],
 })
 export class LoginPageComponent {
+  googleLogoImage:any = "/assets/google-logo.png";
   error: boolean = false;
   counter: number = 0;
   threeFailedAttemptsToLogin: boolean = false;

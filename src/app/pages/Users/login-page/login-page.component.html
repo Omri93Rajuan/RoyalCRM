@@ -60,7 +60,7 @@
 
     <div class="col-12 mb-2 text-center">
       Did not sign up yet?
-      <a routerLink="/signUp" class="fw-bold">Click hear...</a>
+      <a routerLink="/signUp" class="fw-bold">Click here...</a>
     </div>
 
     <input
@@ -88,8 +88,11 @@
       role="button"
       title="Login with google"
       (click)="loginWithGoogle()"
-    ><i       class="fa-brands fa-google display-5 text-success "
-    ></i></div>
+    >
+    
+    <img class="img-responsive" src={{googleLogoImage}} alt="" width="50">
+  
+  </div>
 
 
     <div *ngIf="error" class="text-danger mt-2 text-center">
