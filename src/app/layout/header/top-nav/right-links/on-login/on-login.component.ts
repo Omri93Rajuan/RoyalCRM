@@ -7,11 +7,16 @@ import { UserService } from 'src/app/pages/Users/user.service';
   styles: [],
 })
 export class OnLoginComponent  {
+  userName:any = this.US.showName()
   text: string = '';
   to: string = '';
+
   constructor(private US: UserService) {}
 
   logout() {
     this.US.logout();
+    
   }
+  
+  
 }

@@ -6,17 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class AgePipe implements PipeTransform {
  
-  transform(age: Date): any {
-    let today = new Date();
-    let birthday = new Date(age);
-    let newAge = today.getFullYear() - birthday.getFullYear();
-    let m = today.getMonth() - birthday.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthday.getDate())) 
-    {
-      newAge--;
-    }
-    return newAge;
-}}
+  transform(value: any): number {
+    const convertAge = new Date(value);
+    const timeDiff = Math.abs(Date.now() - convertAge.getTime());
+    return Math.floor(timeDiff / (1000 * 3600 * 24) / 365);
+  }
+}
 
 
-// פיפ של גיל

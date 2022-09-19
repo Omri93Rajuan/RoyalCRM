@@ -15,6 +15,7 @@ export class ContactsTableComponent{
 
   constructor(private CS: ContactsService) {
     this.contacts = CS.getAll();
+    
   }
 
   deleteContact(e: MouseEvent, id: string) {

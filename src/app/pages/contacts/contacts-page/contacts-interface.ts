@@ -5,7 +5,8 @@ _id?:string;
 firstName:string;
 lastName:string;
 email:string;
-birthday:Date;
+birthday:any;
+createdAt?: any;
 phone:string;
 address:Address;
 notes:string

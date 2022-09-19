@@ -10,11 +10,11 @@ import {
   Firestore,
   getDoc,
   onSnapshot,
-  
+  serverTimestamp,
   updateDoc,
 } from '@angular/fire/firestore';
 import { async } from '@firebase/util';
-import { concat } from 'rxjs';
+import { concat, timestamp } from 'rxjs';
 import { Contact } from './contacts-page/contacts-interface';
 
 @Injectable({
@@ -78,23 +78,8 @@ export class ContactsService {
 
   
   add(contact: Contact, cb: Function) {
-    contact.birthday = new Date();
-   const fireObj : Contact = {
-      firstName: contact?.firstName,
-      lastName: contact?.lastName,  
-      email: contact?.email,
-      phone: contact?.phone,
-      birthday: contact?.birthday,
-      notes: contact?.notes,
-      address:{
-        state: contact?.address.state,
-        country: contact?.address.country,
-        city: contact?.address.city,
-        street: contact?.address.street,
-        zip: contact?.address.zip,
-        houseNumber: contact?.address.houseNumber,
-      }}
-  addDoc(this.collectionRef,fireObj )
+    contact.createdAt = serverTimestamp();
+  addDoc(this.collectionRef,contact )
       .then(() => cb()) 
       .catch((error) => console.log(error));
       

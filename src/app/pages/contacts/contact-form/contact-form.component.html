@@ -109,24 +109,16 @@
         "please insert a valid phone number" | toUpperCase
       }}</span>
     </div>
+    
     <div class="col-md-5 mb-2 form-group">
-      <label for="birthday"
-        ><span class="text-danger">*</span> {{ "birthday" | titlecase }}</label
-      ><input
-        [(ngModel)]="contact.birthday"
-        #birthdayField="ngModel"
-        name="birthday"
-        pattern=""
-        type="date"
-        class="form-control"
-        required
-        [ngClass]="{
+      <label for="birthday"><span class="text-danger">*</span> {{ "Birthday" | titlecase }}</label><input id="birthday"
+        [(ngModel)]="contact.birthday" name="birthday" type="date" class="form-control" required minlength="2"
+        #birthdayField="ngModel" [ngClass]="{
           'is-invalid': birthdayField.invalid && birthdayField.touched,
           'is-valid': birthdayField.valid && birthdayField.touched
-        }"
-      />
+        }" />
       <span class="invalid-feedback">{{
-        "please insert a valid birthday" | toUpperCase
+        "birth date must be at lease two characters" | toUpperCase
       }}</span>
     </div>
   </div>
