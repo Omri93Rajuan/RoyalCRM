@@ -8,6 +8,7 @@ import { Customer } from './customer-interface';
 })
 export class CustomerService {
 
+leads:Array<Customer> = []
   collectionRef: CollectionReference<DocumentData> = collection(
     this.FS,
     'customers'
@@ -27,6 +28,9 @@ export class CustomerService {
       });
     });
     return cb(customers, unsubscribeGetAll);
+  }
+  getLeads(){
+    return this.leads
   }
 
   add(customer: Customer, cb: Function) {
@@ -58,5 +62,17 @@ export class CustomerService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
+
+  async getLead(id: string, cb: Function) {
+    try {
+      const docRef = doc(this.FS, 'customers', id);
+      const result = await getDoc(docRef);
+      const customer = { ...result.data(), _id: result.id };
+      cb(customer);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
+
 

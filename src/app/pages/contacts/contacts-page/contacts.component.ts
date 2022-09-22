@@ -3,6 +3,7 @@ import { Controller } from 'src/app/components/display-mode-controllers/controll
 import { Category } from 'src/app/components/search-bar/categoty';
 import { Contact } from './contacts-interface';
 import { ContactsService } from '../contacts.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,7 +12,6 @@ import { ContactsService } from '../contacts.service';
   styleUrls: [],
 })
 export class ContactsComponent implements OnInit{
-  contactsRowData: Array<Contact> = [];
   contacts: Array<Contact> = [];
   categories: Array<Category> = [
     { name: 'First Name', value: 'firstName' },
@@ -30,24 +30,24 @@ export class ContactsComponent implements OnInit{
   ];
   display: string = 'table';
 
-  constructor(private CS:ContactsService) {}
+  constructor(private CS:ContactsService, private routerService:Router) {}
 
 
   onSearch(array: Contact[]) {
     this.contacts = array;
   }
   deleteContact(array: Array<Contact>){
-    this.contactsRowData = array;
-    this.contacts = this.contactsRowData;
+    this.contacts = array;
   }
-        
+  
+
+    
   
   onChangeDisplay(display: string) {
     this.display = display;
   }
 
   ngOnInit() {
-    this.contactsRowData = this.CS.getAll();
-    this.contacts = this.contactsRowData;
+    this.contacts = this.CS.getAll();
   }
 }

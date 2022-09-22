@@ -12,7 +12,7 @@
     class="btn btn-outline-dark"
     title="add new contact"
     role="button"
-    >{{ "add contact" | titlecase }}</a
+    ><i class="fa fa-plus-circle"></i>{{ "add contact" | titlecase }}</a
   >
 </div>
 <display-mode-controllers
@@ -24,7 +24,7 @@
 <search-bar
   *ngIf="contacts && contacts.length"
   [categories]="categories"
-  [array]="contactsRowData"
+  [array]="contacts"
   (onArrayFiltered)="onSearch($event)"
 ></search-bar>
 
@@ -34,6 +34,8 @@
       *ngIf="display === 'table'"
       [contacts]="contacts"
       (onDeleteContact)="deleteContact($event)"
+
+      
     ></contacts-table>
 
   <contacts-folders

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output,OnInit } from '@angular/core';
 import { Contact } from '../../contacts-page/contacts-interface';
 import { ContactsService } from '../../contacts.service';
 
@@ -8,10 +8,14 @@ import { ContactsService } from '../../contacts.service';
   styles: [
   ]
 })
-export class ContactsTableComponent{
-
+export class ContactsTableComponent implements OnInit{
+  status: boolean = false;
   @Input() contacts: Contact[] = [];
+  @Input() leads: any[] = [];
+
   @Output() onDeleteContact = new EventEmitter();
+  @Output() onMoveToLeads = new EventEmitter();
+
 
   constructor(private CS: ContactsService) {
     this.contacts = CS.getAll();
@@ -24,4 +28,10 @@ export class ContactsTableComponent{
     this.contacts = this.CS.getAll();
     this.onDeleteContact.emit(this.contacts);
   }
+
+
+  
+ngOnInit(){
+
+}
 }

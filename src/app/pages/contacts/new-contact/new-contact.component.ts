@@ -16,9 +16,28 @@ export class NewContactComponent{
 
   constructor(private CS: ContactsService, private routerService: Router) {}
 
-   onSubmit(contact: Contact) {
+  onSubmit(event: any) {
+    if (event.firstName != undefined) {
+      let contact: Contact = {
+        firstName: event.firstName,
+        lastName: event.lastName,
+        email: event.email,
+        phone: event.phone,
+        address: {
+          state: event.address.state,
+          country: event.address.country,
+          city: event.address.city,
+          street: event.address.street,
+          houseNumber: event.address.houseNumber,
+          zip: event.address.zip,
+        },
+        birthday: event.birthday,
+        notes : event.birthday,
+        lead  :event.lead
 
-   this.CS.add(contact, () => this.routerService.navigate(['/contacts']));
+      };
+      this.CS.add(contact, () => this.routerService.navigate(['/contacts']));
+    }
   }
     
     

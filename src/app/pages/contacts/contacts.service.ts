@@ -12,6 +12,7 @@ import {
   onSnapshot,
   serverTimestamp,
   updateDoc,
+  setDoc
 } from '@angular/fire/firestore';
 import { async } from '@firebase/util';
 import { concat, timestamp } from 'rxjs';
@@ -21,8 +22,9 @@ import { Contact } from './contacts-page/contacts-interface';
   providedIn: 'root',
 })
 export class ContactsService {
+  leads : any = []
   private test : any = {}
-  private contacts: Contact[] = [
+   contacts: Contact[] = [
     {
       _id: '1',
       firstName: 'omri',
@@ -39,6 +41,7 @@ export class ContactsService {
         street: 'rabi yossi ben kisma',
       },
       notes: '',
+      lead:false
     },
     {
       _id: '2',
@@ -56,6 +59,8 @@ export class ContactsService {
         street: 'rabi yossi ben kisma',
       },
       notes: 'A generally reliable contact',
+      lead:false
+
     },
   ];
 
@@ -63,22 +68,30 @@ export class ContactsService {
     this.FS,
     'contacts'
   );
+
+
   getAll() {
     let contacts: any = [];
      onSnapshot(this.collectionRef, snapShotData => {
       snapShotData.docs.forEach(contact => {
         contacts.push({ ...contact.data(), _id: contact.id });
+        
       }) 
     });
     
     return contacts;
   }
 
+
+
+
+  
   constructor(private FS: Firestore) {}
 
   
   add(contact: Contact, cb: Function) {
-    contact.createdAt = serverTimestamp();
+    contact.createdAt = new Date;
+    contact.lead = false
   addDoc(this.collectionRef,contact )
       .then(() => cb()) 
       .catch((error) => console.log(error));
@@ -89,6 +102,8 @@ export class ContactsService {
     const docRef = doc(this.FS, 'contacts', id);
     deleteDoc(docRef).catch((error) => console.log(error));
   }
+
+ 
 
   async getContact(id: string, cb: Function) {
     try {
@@ -106,5 +121,6 @@ export class ContactsService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
-  
+
+ 
 }

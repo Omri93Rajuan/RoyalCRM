@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Customer } from '../../customer-interface';
 import { CustomerService } from '../../customer.service';
 
@@ -13,7 +14,8 @@ export class CustomersTableComponent  {
   @Input() customers: Customer[] = [];
   @Output() onDeleteCustomer = new EventEmitter();
 
-  constructor(private CS: CustomerService) {}
+  constructor(private CS: CustomerService,private router: Router
+    ) {}
 
   deleteCustomer(e: MouseEvent, id: string) {
     e.stopPropagation();
@@ -23,4 +25,5 @@ export class CustomersTableComponent  {
       this.onDeleteCustomer.emit(customers);
     });
   }
+
 }

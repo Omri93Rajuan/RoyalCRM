@@ -28,6 +28,7 @@ export class EditCustomerComponent implements OnInit {
     );
   }
 
+
   resetForm() {
     this.CS.getCustomer(this.id!, (customer: Customer) => {
       this.customer = customer;

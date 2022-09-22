@@ -10,6 +10,8 @@
         <th class="d-none d-md-table-cell">Country</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>A.Leads</th>
+
       </tr>
     </thead>
     <!-- הזרקת נתונים דינאמים לטבלה -->
@@ -28,9 +30,25 @@
             <i class="fas fa-pen"></i>
           </button></td>
         <td>
+          
           <button class="btn btn-outline-dark"
           (click)="deleteContact($event, contact._id!)">
             <i class="fas fa-trash"></i>
+          </button>
+        </td>
+        <td>
+          <button
+          ngModel
+          ngDefaultControl 
+            class="btn btn-outline-dark"
+            name="lead"
+            #lead ="ngModel"
+            [ngClass]="{
+              'btn-outline-dark': lead.invalid && lead.touched && this.status ,
+              'bg-danger': lead.valid && lead.touched 
+            }"
+          >
+            <i class="fa-solid fa-heart"></i>
           </button>
         </td>
       </tr>

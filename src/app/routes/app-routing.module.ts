@@ -12,6 +12,7 @@ import { CustomersPageComponent } from '../pages/customers/customers-page/custom
 import { NewCustomerComponent } from '../pages/customers/new-customer/new-customer.component';
 import { CustomerDetailsComponent } from '../pages/customers/customer-details/customer-details.component';
 import { EditCustomerComponent } from '../pages/customers/edit-customer/edit-customer.component';
+import { LeadsComponent } from '../pages/leads/leads-page/leads.component';
 
 const routes: Routes = [
 { path:'',component: LoginPageComponent},
@@ -23,6 +24,7 @@ const routes: Routes = [
  { path:'customers/new-customer',component: NewCustomerComponent},
  { path:'customers/customer-details/:id',component: CustomerDetailsComponent},
  { path:'customers/edit-customer/:id',component: EditCustomerComponent},
+ { path:'leads',component: LeadsComponent},
  { path:'about',component: AboutComponent},
  { path:'login',component: LoginPageComponent},
  { path:'signUp',component: SignUpComponent},

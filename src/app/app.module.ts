@@ -47,6 +47,8 @@ import { EditCustomerComponent } from './pages/customers/edit-customer/edit-cust
 import { NewCustomerComponent } from './pages/customers/new-customer/new-customer.component';
 import { CustomerDetailsComponent } from './pages/customers/customer-details/customer-details.component';
 import { CustomersCardsComponent } from './pages/customers/customers-display-mode/customers-cards/customers-cards.component';
+import { ChartsPageComponent } from './pages/Charts/charts-page/charts-page.component';
+import { LeadsComponent } from './pages/leads/leads-page/leads.component';
 
 @NgModule({
   declarations: [
@@ -78,8 +80,8 @@ import { CustomersCardsComponent } from './pages/customers/customers-display-mod
     ContactFormComponent,
     AgePipe,
     SearchBarComponent,
-    ContactsTableComponent,
     ContactsFoldersComponent,
+    ContactsTableComponent,
     DisplayModeControllersComponent,
     ContactsCardsComponent,
     CustomersPageComponent,
@@ -90,6 +92,8 @@ import { CustomersCardsComponent } from './pages/customers/customers-display-mod
     NewCustomerComponent,
     CustomerDetailsComponent,
     CustomersCardsComponent,
+    ChartsPageComponent,
+    LeadsComponent
   ],
   imports: [
     BrowserModule,

@@ -26,6 +26,7 @@ export class ContactFormComponent {
       zip: 0,
     },
     notes: '',
+    lead : false
   };
 
   onSubmit({ valid, value }: NgForm) {
