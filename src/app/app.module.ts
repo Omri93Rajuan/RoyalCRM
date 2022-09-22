@@ -49,6 +49,7 @@ import { CustomerDetailsComponent } from './pages/customers/customer-details/cus
 import { CustomersCardsComponent } from './pages/customers/customers-display-mode/customers-cards/customers-cards.component';
 import { ChartsPageComponent } from './pages/Charts/charts-page/charts-page.component';
 import { LeadsComponent } from './pages/leads/leads-page/leads.component';
+import { LeadsTableComponent } from './pages/leads/leads-table/leads-table.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { LeadsComponent } from './pages/leads/leads-page/leads.component';
     CustomerDetailsComponent,
     CustomersCardsComponent,
     ChartsPageComponent,
-    LeadsComponent
+    LeadsComponent,
+    LeadsTableComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { Customer } from '../../customer-interface';
+import { Customer } from '../../customers-page/customer-interface';
 import { CustomerService } from '../../customer.service';
 
 @Component({

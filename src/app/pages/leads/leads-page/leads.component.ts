@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/components/search-bar/categoty';
 import { Contact } from '../../contacts/contacts-page/contacts-interface';
 import { ContactsService } from '../../contacts/contacts.service';
-import { Customer } from '../../customers/customer-interface';
+import { Customer } from '../../customers/customers-page/customer-interface';
 import { CustomerService } from '../../customers/customer.service';
 
 @Component({
@@ -21,7 +21,7 @@ export class LeadsComponent implements OnInit {
     { name: 'Notes', value: 'notes' },
   ];
 
-  constructor(private CB:ContactsService) { }
+  constructor(private CS:ContactsService) { }
 
   deleteLead(array: Array<Contact>){
     this.wishlistContacts = array;
@@ -33,7 +33,7 @@ export class LeadsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    // this.wishlistContacts = this.CB.getAll()
+    // this.wishlistContacts = this.CS.getAll()
   }
 
 }

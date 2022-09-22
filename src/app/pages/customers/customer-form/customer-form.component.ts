@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Customer } from '../customer-interface';
+import { Customer } from '../customers-page/customer-interface';
 
 @Component({
   selector: 'customer-form',

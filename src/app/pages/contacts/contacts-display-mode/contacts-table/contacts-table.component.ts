@@ -8,30 +8,18 @@ import { ContactsService } from '../../contacts.service';
   styles: [
   ]
 })
-export class ContactsTableComponent implements OnInit{
-  status: boolean = false;
+export class ContactsTableComponent {
   @Input() contacts: Contact[] = [];
-  @Input() leads: any[] = [];
-
   @Output() onDeleteContact = new EventEmitter();
-  @Output() onMoveToLeads = new EventEmitter();
 
-
-  constructor(private CS: ContactsService) {
-    this.contacts = CS.getAll();
-    
-  }
+  constructor(private CS: ContactsService) {}
 
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.CS.delete(id);
-    this.contacts = this.CS.getAll();
-    this.onDeleteContact.emit(this.contacts);
+    this.CS.getAll((contacts: Contact[]) => {
+      this.contacts = contacts;
+      this.onDeleteContact.emit(contacts);
+    });
   }
-
-
-  
-ngOnInit(){
-
-}
 }

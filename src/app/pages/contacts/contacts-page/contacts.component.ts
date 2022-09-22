@@ -12,42 +12,50 @@ import { Router } from '@angular/router';
   styleUrls: [],
 })
 export class ContactsComponent implements OnInit{
+  contactsRowData: Array<Contact> = [];
   contacts: Array<Contact> = [];
   categories: Array<Category> = [
     { name: 'First Name', value: 'firstName' },
     { name: 'Last name', value: 'lastName' },
     { name: 'Email', value: 'email' },
     { name: 'Phone', value: 'phone' },
-    { name: 'notes', value: 'notes' },
+    { name: 'Birthday', value: 'birthday' },
   ];
   controllers: Array<Controller> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
-    { icon:"fas fa-id-card-alt", value: 'card' },
-
-
-
+    { icon: 'fa fa-id-card', value: 'cards' },
   ];
   display: string = 'table';
+  dataReceived: boolean = false;
+  unsubscribeGetAll: Function = () => {};
 
-  constructor(private CS:ContactsService, private routerService:Router) {}
-
+  constructor(private CS: ContactsService) {}
 
   onSearch(array: Contact[]) {
     this.contacts = array;
   }
-  deleteContact(array: Array<Contact>){
-    this.contacts = array;
-  }
-  
 
-    
-  
+  deleteContact(array: Array<Contact>) {
+    this.contactsRowData = array;
+    this.contacts = this.contactsRowData;
+  }
+
   onChangeDisplay(display: string) {
     this.display = display;
   }
 
   ngOnInit() {
-    this.contacts = this.CS.getAll();
+    this.CS.getAll((contacts: Contact[], unsubscribeGetAll: Function) => {
+      this.contactsRowData = contacts;
+      this.contacts = this.contactsRowData;
+      this.dataReceived = true;
+      this.unsubscribeGetAll = unsubscribeGetAll;
+    });
   }
+
+  ngOnDestroy(): void {
+    this.unsubscribeGetAll();
+  }
+
 }

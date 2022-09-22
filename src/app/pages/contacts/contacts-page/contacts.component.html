@@ -21,12 +21,9 @@
 ></display-mode-controllers>
 </div>
 
-<search-bar
-  *ngIf="contacts && contacts.length"
-  [categories]="categories"
-  [array]="contacts"
-  (onArrayFiltered)="onSearch($event)"
-></search-bar>
+<search-bar  [categories]="categories" [array]="contactsRowData"
+(onArrayFiltered)="onSearch($event)">
+</search-bar>
 
 <!-- טבלת אנשי קשר -->
   <div *ngIf="contacts && contacts.length; else noContact">

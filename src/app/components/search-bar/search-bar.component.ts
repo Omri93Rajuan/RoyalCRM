@@ -16,12 +16,14 @@ export class SearchBarComponent implements OnInit {
 
   category: Category = { name: '', value: '' };
 
+
   onCategoryChange(e: any) {
     const categoryChanged = this.categories.find(
       (category: Category) => category.value === e.target.value
     );
     if (categoryChanged) this.category = categoryChanged;
   }
+
 
   onSearch(e: any) {
     const term = e.target.value;

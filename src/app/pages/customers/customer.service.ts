@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { addDoc, collection, CollectionReference, deleteDoc, doc, DocumentData, Firestore, getDoc, serverTimestamp, updateDoc } from '@angular/fire/firestore';
 import { onSnapshot } from '@firebase/firestore';
-import { Customer } from './customer-interface';
+import { Customer } from './customers-page/customer-interface';
 
 @Injectable({
   providedIn: 'root'

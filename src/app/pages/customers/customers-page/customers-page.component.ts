@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Controller } from 'src/app/components/display-mode-controllers/controllerts';
 import { Category } from 'src/app/components/search-bar/categoty';
-import { Customer } from '../customer-interface';
+import { Customer } from './customer-interface';
 import { CustomerService } from '../customer.service';
 
 @Component({
@@ -49,7 +49,7 @@ export class CustomersPageComponent implements OnInit, OnDestroy {
       this.customersRowData = customers;
       this.customers = this.customersRowData;
       this.dataReceived = true;
-      // this.unsubscribeGetAll = unsubscribeGetAll;
+      this.unsubscribeGetAll = unsubscribeGetAll;
     });
   }
 
