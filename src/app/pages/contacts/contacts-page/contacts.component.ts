@@ -24,7 +24,7 @@ export class ContactsComponent implements OnInit{
   controllers: Array<Controller> = [
     { icon: 'fa fa-table-list', value: 'table' },
     { icon: 'fa fa-folder', value: 'folder' },
-    { icon: 'fa fa-id-card', value: 'cards' },
+    { icon:"fas fa-id-card-alt", value: 'cards' }
   ];
   display: string = 'table';
   dataReceived: boolean = false;
