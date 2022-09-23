@@ -39,9 +39,9 @@ export class ContactsService {
   }
 
   add(contact: Contact, cb: Function) {
-    // contact.createdAt = new Date();
-    contact.createdAt = serverTimestamp();
-    addDoc(this.collectionRef, contact)
+    contact.createdAt = new Date();
+    contact.lead =false;
+    addDoc(this.collectionRef,contact)
       .then(() => cb())
       .catch((error) => console.log(error));
   }
@@ -68,4 +68,18 @@ export class ContactsService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
+  editLeadStatus( id: string,contact:Contact, cb: Function) {
+    const docRef = doc(this.FS, 'contacts', id);
+    updateDoc(docRef, {lead:!contact.lead })
+      .then(() => cb())
+      .catch((error) => console.log(error));
+  }
+  filterContact(contact:Contact[]){
+  const arrayFiltered = [...contact].filter((lead: any) =>
+  lead.lead === true
+  )}
+  
+
+
+
 }

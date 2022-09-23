@@ -40,12 +40,13 @@
           <button
           ngModel
           ngDefaultControl 
+          (click)="changeLeadStatus($event, contact._id!,contact)"
             class="btn btn-outline-dark"
             name="lead"
             #lead ="ngModel"
             [ngClass]="{
-              'btn-outline-dark': lead.invalid && lead.touched  ,
-              'bg-danger': lead.valid && lead.touched 
+              'btn-outline-dark': contact.lead ===false,
+              'btn-outline-danger': contact.lead ===true 
             }"
           >
             <i class="fa-solid fa-heart"></i>

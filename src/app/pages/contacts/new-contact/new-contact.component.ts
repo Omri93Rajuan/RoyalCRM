@@ -33,7 +33,6 @@ export class NewContactComponent{
         },
         birthday: event.birthday,
         notes : event.birthday,
-        lead  :event.lead
 
       };
       this.CS.add(contact, () => this.routerService.navigate(['/contacts']));

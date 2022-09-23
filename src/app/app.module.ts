@@ -95,7 +95,7 @@ import { LeadsTableComponent } from './pages/leads/leads-table/leads-table.compo
     CustomersCardsComponent,
     ChartsPageComponent,
     LeadsComponent,
-    LeadsTableComponent
+    LeadsTableComponent,
   ],
   imports: [
     BrowserModule,

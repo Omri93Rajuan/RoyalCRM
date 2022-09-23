@@ -10,7 +10,7 @@ createdAt?: any;
 phone:string;
 address:Address;
 notes:string
-lead:boolean 
+lead?:boolean 
 
     } 
 

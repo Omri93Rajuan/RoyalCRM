@@ -17,12 +17,11 @@ export class LeadsTableComponent  {
 
   constructor(private CS: ContactsService) {}
 
-  deleteContact(e: MouseEvent, id: string) {
+  changeLeadStatus(e: MouseEvent,id:string,contact:Contact){
     e.stopPropagation();
-    this.CS.delete(id);
-    this.CS.getAll((contacts: Contact[]) => {
+    this.CS.editLeadStatus(id,contact,() => this.CS.getAll((contacts: Contact[]) => {
       this.contacts = contacts;
-      this.onDeleteContact.emit(contacts);
-    });
-  }
+    }))
+
+    }
 }

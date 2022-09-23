@@ -4,6 +4,9 @@ import { Contact } from '../../contacts/contacts-page/contacts-interface';
 import { ContactsService } from '../../contacts/contacts.service';
 import { Customer } from '../../customers/customers-page/customer-interface';
 import { CustomerService } from '../../customers/customer.service';
+import { Observable } from '@firebase/util';
+import { fromRef } from '@angular/fire/firestore';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-leads',
@@ -13,7 +16,7 @@ import { CustomerService } from '../../customers/customer.service';
 export class LeadsComponent implements OnInit {
   contactsRowData: Array<Contact> = [];
   array:any = []
-  wishlistContacts: Array<any> = []
+  wishlistContacts: Array<Contact> = []
   categories: Array<Category> = [
     { name: 'First Name', value: 'firstName' },
     { name: 'Last name', value: 'lastName' },
@@ -28,9 +31,6 @@ export class LeadsComponent implements OnInit {
     this.wishlistContacts = array;
   }
   
-  onSearch() {
-    // return this.wishlistContacts = this.ContactS.getLead();
-  }
 
   deleteContact(array: Array<Contact>) {
     this.contactsRowData = array;
@@ -38,10 +38,17 @@ export class LeadsComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.CS.getAll((contacts: Contact[], unsubscribeGetAll: Function) => {
+    // ref.orderByChild("key").equalTo("-LF2eRf1lHI6X3U6C7Yh")
+
+    this.CS.getAll((contacts: Contact[]) => {
       this.contactsRowData = contacts;
       this.wishlistContacts = this.contactsRowData;
+
       ;
-    });
+    })
+
+
+    
   }
+  
 }
