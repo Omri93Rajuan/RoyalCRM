@@ -11,6 +11,7 @@ import { CustomerService } from '../../customers/customer.service';
   styleUrls: []
 })
 export class LeadsComponent implements OnInit {
+  contactsRowData: Array<Contact> = [];
   array:any = []
   wishlistContacts: Array<any> = []
   categories: Array<Category> = [
@@ -31,9 +32,16 @@ export class LeadsComponent implements OnInit {
     // return this.wishlistContacts = this.ContactS.getLead();
   }
 
-
-  ngOnInit(): void {
-    // this.wishlistContacts = this.CS.getAll()
+  deleteContact(array: Array<Contact>) {
+    this.contactsRowData = array;
+    this.wishlistContacts = this.contactsRowData;
   }
-
+ 
+  ngOnInit() {
+    this.CS.getAll((contacts: Contact[], unsubscribeGetAll: Function) => {
+      this.contactsRowData = contacts;
+      this.wishlistContacts = this.contactsRowData;
+      ;
+    });
+  }
 }

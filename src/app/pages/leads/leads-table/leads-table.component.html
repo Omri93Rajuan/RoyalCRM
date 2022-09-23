@@ -1,53 +1,34 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th>{{ "Number" | titlecase }}</th>
-        <th>{{ "first Name" | toUpperCase }}</th>
-        <th>{{ "last name" | toUpperCase }}</th>
-        <th class="d-none d-md-table-cell">{{ "Phone" | titlecase }}</th>
-        <th class="d-none d-md-table-cell">{{ "Email" | titlecase }}</th>
-        <th>{{ "Edit" | titlecase }}</th>
-        <th>{{ "Delete" | titlecase }}</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        [ngClass]="odd ? 'alert-success' : 'bg-light'"
-        *ngFor="let customer of customers; index as i; odd as odd"
-        [routerLink]="['customer-details', customer._id]"
-        role="button"
-      >
-        <td>{{ i + 1 }}</td>
-        <td>{{ customer.firstName | toUpperCase }}</td>
-        <td>{{ customer.lastName | toUpperCase }}</td>
-        <td class="d-none d-md-table-cell">{{ customer.phone }}</td>
-        <td class="d-none d-md-table-cell">{{ customer.email }}</td>
-        <td>
-          <a
-            class="btn btn-outline-dark"
-            [routerLink]="['edit-customer', customer._id]"
-            role="button"
-            ><i class="fas fa-pen"></i
-          ></a>
-        </td>
-        <td>
-          <button
-            class="btn btn-outline-dark"
-            (click)="deleteCustomer($event, customer._id!)"
-          >
-            <i class="fas fa-trash"></i>
-          </button>
-        </td>
-        <!-- <td>
-          <button
-            class="btn btn-outline-dark"
-            (click)="toLeads($event, customer._id!)"
-          >
-            <i class="fa-solid fa-hart"></i>
-          </button>
-        </td> -->
-      </tr>
-    </tbody>
-  </table>
-  
+<table class="table table-hover">
+  <thead class="table-info">
+    <tr>
+      <th>Number</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th class="d-none d-md-table-cell">Email</th>
+      <th class="d-none d-md-table-cell">Phone</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <!-- הזרקת נתונים דינאמים לטבלה -->
+  <tbody>
+    <tr
+      *ngFor="let contact of contacts; index as i"
+      [routerLink]="['contact-details', contact._id]"
+      role="button"
+    >
+      <td>{{ i + 1 }}</td>
+      <td>{{ contact.firstName | titlecase }}</td>
+      <td>{{ contact.lastName | titlecase }}</td>
+      <td class="d-none d-md-table-cell">{{ contact.email }}</td>
+      <td class="d-none d-md-table-cell">{{ contact.phone }}</td>
+      <td>
+        <button
+          class="btn btn-outline-dark"
+          (click)="deleteContact($event, contact._id!)"
+        >
+          <i class="fas fa-trash"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

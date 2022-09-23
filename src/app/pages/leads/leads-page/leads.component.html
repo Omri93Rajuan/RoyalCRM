@@ -4,3 +4,7 @@
   icon="fa-solid fa-headset"
 ></page-header>
 
+<leads-table
+[contacts]="wishlistContacts"
+(onDeleteContact)="deleteContact($event)"
+></leads-table>

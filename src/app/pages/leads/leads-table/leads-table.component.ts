@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Contact } from '../../contacts/contacts-page/contacts-interface';
+import { ContactsService } from '../../contacts/contacts.service';
 import { CustomerService } from '../../customers/customer.service';
 import { Customer } from '../../customers/customers-page/customer-interface';
 
@@ -10,19 +12,17 @@ import { Customer } from '../../customers/customers-page/customer-interface';
   ]
 })
 export class LeadsTableComponent  {
+  @Input() contacts: Contact[] = [];
+  @Output() onDeleteContact = new EventEmitter();
 
-  @Input() customers: Customer[] = [];
-  @Output() onDeleteCustomer = new EventEmitter();
+  constructor(private CS: ContactsService) {}
 
-  constructor(private CS:CustomerService,private router: Router) { }
-
-  deleteCustomer(e: MouseEvent, id: string) {
+  deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
     this.CS.delete(id);
-    this.CS.getAll((customers: Customer[]) => {
-      this.customers = customers;
-      this.onDeleteCustomer.emit(customers);
+    this.CS.getAll((contacts: Contact[]) => {
+      this.contacts = contacts;
+      this.onDeleteContact.emit(contacts);
     });
   }
-
 }
