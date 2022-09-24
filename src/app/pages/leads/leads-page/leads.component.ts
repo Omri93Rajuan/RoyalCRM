@@ -5,8 +5,8 @@ import { ContactsService } from '../../contacts/contacts.service';
 import { Customer } from '../../customers/customers-page/customer-interface';
 import { CustomerService } from '../../customers/customer.service';
 import { Observable } from '@firebase/util';
-import { fromRef } from '@angular/fire/firestore';
-import { filter } from 'rxjs';
+import { collection, CollectionReference, DocumentData, Firestore, fromRef } from '@angular/fire/firestore';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-leads',
@@ -14,6 +14,14 @@ import { filter } from 'rxjs';
   styleUrls: []
 })
 export class LeadsComponent implements OnInit {
+
+  collectionRef: CollectionReference<DocumentData> = collection(
+    this.FS,
+    'contacts'
+  );
+
+
+testFilter :  Array<any> = []
   contactsRowData: Array<Contact> = [];
   array:any = []
   wishlistContacts: Array<Contact> = []
@@ -25,27 +33,26 @@ export class LeadsComponent implements OnInit {
     { name: 'Notes', value: 'notes' },
   ];
 
-  constructor(private CS:ContactsService) { }
 
-  deleteLead(array: Array<Contact>){
-    this.wishlistContacts = array;
-  }
   
+  constructor(private CS:ContactsService,private FS: Firestore) { }
+
+
 
   deleteContact(array: Array<Contact>) {
     this.contactsRowData = array;
     this.wishlistContacts = this.contactsRowData;
   }
+showLeads(array: Array<Contact>) {
+  this.contactsRowData = array;
+}
  
   ngOnInit() {
-    // ref.orderByChild("key").equalTo("-LF2eRf1lHI6X3U6C7Yh")
 
-    this.CS.getAll((contacts: Contact[]) => {
+    this.CS.getAllLeads((contacts: Contact[]) => {
       this.contactsRowData = contacts;
-      this.wishlistContacts = this.contactsRowData;
-
-      ;
-    })
+      this.wishlistContacts = this.contactsRowData
+    },)
 
 
     

@@ -15,13 +15,19 @@ export class LeadsTableComponent  {
   @Input() contacts: Contact[] = [];
   @Output() onDeleteContact = new EventEmitter();
 
+  contactsRowData: Array<Contact> = [];
+  array:any = []
+  wishlistContacts: Array<Contact> = []
+
   constructor(private CS: ContactsService) {}
 
   changeLeadStatus(e: MouseEvent,id:string,contact:Contact){
     e.stopPropagation();
-    this.CS.editLeadStatus(id,contact,() => this.CS.getAll((contacts: Contact[]) => {
+    this.CS.editLeadStatus(id,contact,() => this.CS.getAllLeads((contacts: Contact[]) => {
       this.contacts = contacts;
     }))
 
     }
+
+
 }

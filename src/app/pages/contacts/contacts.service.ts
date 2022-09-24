@@ -6,6 +6,7 @@ import {
   CollectionReference,
   deleteDoc,
   doc,
+  docSnapshots,
   DocumentData,
   Firestore,
   getDoc,
@@ -14,6 +15,9 @@ import {
   updateDoc,
 } from '@angular/fire/firestore';
 import { Contact } from './contacts-page/contacts-interface';
+import { filter } from 'rxjs'
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -22,13 +26,14 @@ export class ContactsService {
     this.FS,
     'contacts'
   );
+  
 
   constructor(private FS: Firestore) {}
 
   getAll(cb: Function) {
     let contacts: any = [];
     const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
-      snapShotData.docs.forEach((contact) => {
+      snapShotData.docs.forEach((contact:any) => {
         contacts.push({
           ...contact.data(),
           _id: contact.id,
@@ -38,10 +43,26 @@ export class ContactsService {
     return cb(contacts, unsubscribeGetAll);
   }
 
+  getAllLeads(cb: Function) {
+    let contacts: any = [];
+    const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
+      snapShotData.docs.forEach((contact) => {
+        if(contact.get("lead")){
+        {
+          contacts.push({
+            ...contact.data(),
+            _id: contact.id,
+          });
+        }}
+      });
+    });
+    return cb(contacts, unsubscribeGetAll);
+  }
+
   add(contact: Contact, cb: Function) {
     contact.createdAt = new Date();
-    contact.lead =false;
-    addDoc(this.collectionRef,contact)
+    contact.lead = false;
+    addDoc(this.collectionRef, contact)
       .then(() => cb())
       .catch((error) => console.log(error));
   }
@@ -68,18 +89,11 @@ export class ContactsService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
-  editLeadStatus( id: string,contact:Contact, cb: Function) {
+  editLeadStatus(id: string, contact: Contact, cb: Function) {
     const docRef = doc(this.FS, 'contacts', id);
-    updateDoc(docRef, {lead:!contact.lead })
+    updateDoc(docRef, { lead: !contact.lead })
       .then(() => cb())
       .catch((error) => console.log(error));
   }
-  filterContact(contact:Contact[]){
-  const arrayFiltered = [...contact].filter((lead: any) =>
-  lead.lead === true
-  )}
   
-
-
-
 }

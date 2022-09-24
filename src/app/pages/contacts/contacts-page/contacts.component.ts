@@ -29,8 +29,12 @@ export class ContactsComponent implements OnInit{
   display: string = 'table';
   dataReceived: boolean = false;
   unsubscribeGetAll: Function = () => {};
+  
+  
 
   constructor(private CS: ContactsService) {}
+
+
 
   onSearch(array: Contact[]) {
     this.contacts = array;
