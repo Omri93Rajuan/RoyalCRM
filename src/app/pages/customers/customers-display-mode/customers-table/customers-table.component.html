@@ -1,5 +1,5 @@
-<table class="table">
-    <thead>
+<table class="table table-hover">
+    <thead class="table-success">
       <tr>
         <th>{{ "Number" | titlecase }}</th>
         <th>{{ "first Name" | toUpperCase }}</th>
@@ -13,7 +13,6 @@
     </thead>
     <tbody>
       <tr
-        [ngClass]="odd ? 'alert-success' : 'bg-light'"
         *ngFor="let customer of customers; index as i; odd as odd"
         [routerLink]="['customer-details', customer._id]"
         role="button"

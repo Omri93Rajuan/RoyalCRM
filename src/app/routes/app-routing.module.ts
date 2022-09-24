@@ -13,7 +13,8 @@ import { NewCustomerComponent } from '../pages/customers/new-customer/new-custom
 import { CustomerDetailsComponent } from '../pages/customers/customer-details/customer-details.component';
 import { EditCustomerComponent } from '../pages/customers/edit-customer/edit-customer.component';
 import { LeadsComponent } from '../pages/leads/leads-page/leads.component';
-
+import { LeadsDetailsComponent } from '../pages/leads/leads-details/leads-details.component';
+LeadsDetailsComponent
 const routes: Routes = [
 { path:'',component: LoginPageComponent},
  { path:'contacts',component: ContactsComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
  { path:'customers/customer-details/:id',component: CustomerDetailsComponent},
  { path:'customers/edit-customer/:id',component: EditCustomerComponent},
  { path:'leads',component: LeadsComponent},
+ { path:'leads/leads-details/:id',component: LeadsDetailsComponent},
  { path:'about',component: AboutComponent},
  { path:'login',component: LoginPageComponent},
  { path:'signUp',component: SignUpComponent},

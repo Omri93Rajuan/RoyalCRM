@@ -1,0 +1,100 @@
+<page-header
+  title="Leads details"
+  icon="fa fa-user"
+  subTitle="here you can find more details about the leads"
+  bgColor= "alert-danger rounded-3 p-2"
+
+>
+</page-header>
+
+<div class="my-2">
+  <a routerLink="/leads" class="btn btn-outline-dark">
+    <i class="fas fa-arrow-alt-circle-left"></i>
+    {{ "back" | titlecase }}
+  </a>
+</div>
+
+<div *ngIf="contact; else noContact">
+  <div class="center">
+    <div class="col-12 col-md-11 col-lg-10">
+      <table
+        class="table table-danger table-striped mt-2 table-bordered table-hover border-dark"
+      >
+        <tbody>
+          <tr>
+            <th class="col-4 col-lg-2">{{ "first name" | titlecase }}</th>
+            <td class="col-8 col-lg-10">
+              {{ contact.firstName | toUpperCase }}
+            </td>
+          </tr>
+          <tr>
+            <th class="col-4 col-lg-2">{{ "last name" | titlecase }}</th>
+            <td class="col-8 col-lg-10">{{ contact.lastName | titlecase }}</td>
+          </tr>
+          <tr>
+            <th class="col-4 col-lg-2">{{ "phone" | titlecase }}</th>
+            <td class="col-8 col-lg-10">{{ contact.phone | titlecase }}</td>
+          </tr>
+          <tr>
+            <th class="col-4 col-lg-2">{{ "age" | titlecase }}</th>
+            <td class="col-8 col-lg-10">{{ contact.birthday | age  }}</td>
+          </tr>
+          <tr>
+            <th>{{ "mail" | titlecase }}</th>
+            <td>{{ contact.email }}</td>
+          </tr>
+          <tr *ngIf="contact.address">
+            <th class="col-4 col-lg-2">{{ "address" | titlecase }}</th>
+            <td>
+              <table class="table m-0">
+                <thead>
+                  <tr>
+                    <th *ngIf= "contact.address.state">
+                      {{ "state" | titlecase }}
+                    </th>
+                    <th>{{"country" | titlecase}}</th>
+                    <th>{{"city" | titlecase}}</th>
+                    <th>{{"street" | titlecase}}</th>
+                    <th>{{"house number" | titlecase}}</th>
+                    <th>{{"zip" | titlecase}}</th>
+                  </tr>
+                  
+                </thead>
+                <tbody>
+                  <tr>
+                    <td *ngIf="contact.address.state">
+                      {{ contact.address.state | titlecase }}
+                    </td>
+                    <td>{{ contact.address.country }}</td>
+                    <td>{{ contact.address.city }}</td>
+                    <td>{{ contact.address.street }}</td>
+                    <td>{{ contact.address.houseNumber }}</td>
+                    <td>
+                      {{
+                        contact.address.zip
+                          ? contact.address.zip
+                          : ("not none" | titlecase)
+                      }}
+                    </td>
+                  </tr>
+                  
+                </tbody>
+             
+              </table>
+            </td>
+          </tr>
+          <tr *ngIf="contact.notes">
+            <th>{{ "notes" | titlecase }}</th>
+            <td>{{ contact.notes }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #noContact>
+  <div class="p-2">
+    {{ "no leads where found in the database" | toUpperCase }}
+  </div>
+</ng-template>

@@ -2,9 +2,19 @@
   title="leads"
   subTitle="this is the leads page"
   icon="fa-solid fa-headset"
+  bgColor= "alert-danger rounded-3 p-2"
 ></page-header>
 
-<leads-table
+<leads-table  *ngIf="wishlistContacts && wishlistContacts.length; else nowishlistContacts"
 [contacts]="wishlistContacts"
 ></leads-table>
 
+<ng-template #nowishlistContacts>
+  <div class="display-5">
+    {{
+      "Oops... it looks like there are no hot leads  to display at the moment"
+        | toUpperCase
+    }}
+  </div>
+
+</ng-template>

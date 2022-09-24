@@ -50,6 +50,7 @@ import { CustomersCardsComponent } from './pages/customers/customers-display-mod
 import { ChartsPageComponent } from './pages/Charts/charts-page/charts-page.component';
 import { LeadsComponent } from './pages/leads/leads-page/leads.component';
 import { LeadsTableComponent } from './pages/leads/leads-table/leads-table.component';
+import { LeadsDetailsComponent } from './pages/leads/leads-details/leads-details.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { LeadsTableComponent } from './pages/leads/leads-table/leads-table.compo
     ChartsPageComponent,
     LeadsComponent,
     LeadsTableComponent,
+    LeadsDetailsComponent,
   ],
   imports: [
     BrowserModule,
