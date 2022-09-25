@@ -6,18 +6,13 @@ import {
   CollectionReference,
   deleteDoc,
   doc,
-  docSnapshots,
   DocumentData,
   Firestore,
   getDoc,
   onSnapshot,
-  serverTimestamp,
   updateDoc,
 } from '@angular/fire/firestore';
 import { Contact } from './contacts-page/contacts-interface';
-import { filter } from 'rxjs'
-
-
 @Injectable({
   providedIn: 'root',
 })
@@ -26,14 +21,13 @@ export class ContactsService {
     this.FS,
     'contacts'
   );
-  
 
   constructor(private FS: Firestore) {}
 
   getAll(cb: Function) {
     let contacts: any = [];
     const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
-      snapShotData.docs.forEach((contact:any) => {
+      snapShotData.docs.forEach((contact: any) => {
         contacts.push({
           ...contact.data(),
           _id: contact.id,
@@ -47,13 +41,14 @@ export class ContactsService {
     let contacts: any = [];
     const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
       snapShotData.docs.forEach((contact) => {
-        if(contact.get("lead")){
-        {
-          contacts.push({
-            ...contact.data(),
-            _id: contact.id,
-          });
-        }}
+        if (contact.get('lead')) {
+          {
+            contacts.push({
+              ...contact.data(),
+              _id: contact.id,
+            });
+          }
+        }
       });
     });
     return cb(contacts, unsubscribeGetAll);
@@ -95,5 +90,4 @@ export class ContactsService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
-  
 }

@@ -1,10 +1,21 @@
 import { Injectable } from '@angular/core';
-import { addDoc, collection, CollectionReference, deleteDoc, doc, DocumentData, Firestore, getDoc, serverTimestamp, updateDoc } from '@angular/fire/firestore';
-import { onSnapshot } from '@firebase/firestore';
+import {
+  addDoc,
+  collection,
+  CollectionReference,
+  deleteDoc,
+  doc,
+  DocumentData,
+  Firestore,
+  getDoc,
+  serverTimestamp,
+  updateDoc,
+  onSnapshot
+} from '@angular/fire/firestore';
 import { Customer } from './customers-page/customer-interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
   collectionRef: CollectionReference<DocumentData> = collection(
@@ -13,16 +24,14 @@ export class CustomerService {
   );
 
   constructor(private FS: Firestore) {}
-
   getAll(cb: Function) {
     let customers: any = [];
     const unsubscribeGetAll = onSnapshot(this.collectionRef, (snapShotData) => {
-      snapShotData.docs.forEach((customer) => {
+      snapShotData.docs.forEach((customer: any) => {
         customers.push({
           ...customer.data(),
           _id: customer.id,
         });
-        
       });
     });
     return cb(customers, unsubscribeGetAll);
@@ -57,8 +66,4 @@ export class CustomerService {
       .then(() => cb())
       .catch((error) => console.log(error));
   }
-
-  
 }
-
-
