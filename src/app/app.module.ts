@@ -51,6 +51,7 @@ import { ChartsPageComponent } from './pages/Charts/charts-page/charts-page.comp
 import { LeadsComponent } from './pages/leads/leads-page/leads.component';
 import { LeadsTableComponent } from './pages/leads/leads-table/leads-table.component';
 import { LeadsDetailsComponent } from './pages/leads/leads-details/leads-details.component';
+import { SpinnerLoaderComponent } from './components/spinner-loader/spinner-loader.component';
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import { LeadsDetailsComponent } from './pages/leads/leads-details/leads-details
     LeadsComponent,
     LeadsTableComponent,
     LeadsDetailsComponent,
+    SpinnerLoaderComponent,
   ],
   imports: [
     BrowserModule,

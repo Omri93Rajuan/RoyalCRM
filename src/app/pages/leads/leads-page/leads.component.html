@@ -4,10 +4,12 @@
   icon="fa-solid fa-headset"
   bgColor= "alert-danger rounded-3 p-2"
 ></page-header>
-
+ <div *ngIf="dataReceived; else loader">
+  >
 <leads-table  *ngIf="wishlistContacts && wishlistContacts.length; else nowishlistContacts"
 [contacts]="wishlistContacts"
 ></leads-table>
+</div>
 
 <ng-template #nowishlistContacts>
   <div class="display-5">
@@ -18,3 +20,7 @@
   </div>
 
 </ng-template>
+<ng-template #loader>
+  <spinner-loader></spinner-loader>
+</ng-template>
+

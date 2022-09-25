@@ -7,7 +7,7 @@
 >
 </page-header>
 
-<!-- <div *ngIf="dataReceived; else loader"> -->
+<div *ngIf="dataReceived; else loader">
   <div class="d-flex justify-content-between">
     <div class="my-2">
       <a
@@ -48,6 +48,8 @@
       *ngIf="display === 'card'"
     ></customers-cards>
   </div>
+</div>
+
 
   <ng-template #noCustomers>
     <div class="display-5">
@@ -56,13 +58,10 @@
           | toUpperCase
       }}
     </div>
+
   </ng-template>
 
 <ng-template #loader>
-  <div class="display-5">
-    {{
-      "Oops... it looks like there are no database users to display at the moment"
-        | toUpperCase
-    }}
-  </div></ng-template
->
+  <spinner-loader></spinner-loader>
+</ng-template>
+

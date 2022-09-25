@@ -32,6 +32,8 @@ testFilter :  Array<any> = []
     { name: 'Phone', value: 'phone' },
     { name: 'Notes', value: 'notes' },
   ];
+  dataReceived: boolean = false;
+
 
 
   
@@ -52,6 +54,7 @@ showLeads(array: Array<Contact>) {
     this.CS.getAllLeads((contacts: Contact[]) => {
       this.contactsRowData = contacts;
       this.wishlistContacts = this.contactsRowData
+      this.dataReceived = true;
     },)
 
 

@@ -5,7 +5,7 @@
   icon="fa-solid fa-address-card"
   bgColor= "alert-info rounded-3 p-2"
 ></page-header>
-<!-- <div *ngIf="dataReceived; else loader"> -->
+<div *ngIf="dataReceived; else loader">
   <div class="d-flex justify-content-between">
 <div class="my-2">
   <a
@@ -46,6 +46,7 @@
 *ngIf="display === 'cards'"
 ></contacts-cards>
 </div>
+</div>
 
 <ng-template #noContact>
   <div class="display-5">
@@ -56,3 +57,8 @@
   </div>
 
 </ng-template>
+
+<ng-template #loader>
+  <spinner-loader></spinner-loader>
+</ng-template>
+
