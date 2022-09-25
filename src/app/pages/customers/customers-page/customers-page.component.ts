@@ -50,7 +50,10 @@ export class CustomersPageComponent implements OnInit, OnDestroy {
       this.customers = this.customersRowData;
       this.dataReceived = true;
       this.unsubscribeGetAll = unsubscribeGetAll;
+      console.log(this.customers);
+      
     });
+    
   }
 
   ngOnDestroy(): void {

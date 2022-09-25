@@ -5,6 +5,7 @@
   icon="fa-solid fa-address-card"
   bgColor= "alert-info rounded-3 p-2"
 ></page-header>
+
 <div *ngIf="dataReceived; else loader">
   <div class="d-flex justify-content-between">
 <div class="my-2">
@@ -32,8 +33,6 @@
       *ngIf="display === 'table'"
       [contacts]="contacts"
       (onDeleteContact)="deleteContact($event)"
-
-      
     ></contacts-table>
 
   <contacts-folders
@@ -47,6 +46,7 @@
 ></contacts-cards>
 </div>
 </div>
+
 
 <ng-template #noContact>
   <div class="display-5">

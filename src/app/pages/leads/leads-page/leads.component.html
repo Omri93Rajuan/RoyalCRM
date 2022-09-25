@@ -5,7 +5,7 @@
   bgColor= "alert-danger rounded-3 p-2"
 ></page-header>
  <div *ngIf="dataReceived; else loader">
-  >
+  
 <leads-table  *ngIf="wishlistContacts && wishlistContacts.length; else nowishlistContacts"
 [contacts]="wishlistContacts"
 ></leads-table>

@@ -1,12 +1,12 @@
 <table class="table table-hover">
     <thead class="table-info">
       <tr>
-        <th>Number</th>
+        <th class="d-none d-md-table-cell">Number</th>
         <th>First name</th>
         <th>Last name</th>
         <th class="d-none d-md-table-cell">Email</th>
         <th class="d-none d-md-table-cell">Phone</th>
-        <th>Age</th>
+        <th class="d-none d-md-table-cell">Age</th>
         <th class="d-none d-md-table-cell">Country</th>
         <th>Edit</th>
         <th>Delete</th>
@@ -18,12 +18,12 @@
     <tbody>
       <tr *ngFor="let contact of contacts; index as i"
       [routerLink]="['contact-details',contact._id]" role="button">
-        <td>{{ i + 1 }}</td>
+        <td class="d-none d-md-table-cell">{{ i + 1 }}</td>
         <td>{{ contact.firstName | titlecase }}</td>
         <td>{{ contact.lastName | titlecase }}</td>
         <td class="d-none d-md-table-cell">{{ contact.email }}</td>
         <td class="d-none d-md-table-cell">{{ contact.phone }}</td>
-        <td>{{ contact.birthday | age}}</td>
+        <td class="d-none d-md-table-cell">{{ contact.birthday | age}}</td>
         <td class="d-none d-md-table-cell">{{ contact.address.country | titlecase }}</td>
         <td>  <button class="btn btn-outline-dark"
           [routerLink]="['edit-contact', contact._id]">

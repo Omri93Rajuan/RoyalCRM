@@ -7,11 +7,9 @@ import { Customer } from './customers-page/customer-interface';
   providedIn: 'root'
 })
 export class CustomerService {
-
-leads:Array<Customer> = []
   collectionRef: CollectionReference<DocumentData> = collection(
     this.FS,
-    'customers'
+    'customer'
   );
 
   constructor(private FS: Firestore) {}
@@ -29,9 +27,6 @@ leads:Array<Customer> = []
     });
     return cb(customers, unsubscribeGetAll);
   }
-  getLeads(){
-    return this.leads
-  }
 
   add(customer: Customer, cb: Function) {
     customer.createdAt = serverTimestamp();
@@ -42,7 +37,7 @@ leads:Array<Customer> = []
 
   async getCustomer(id: string, cb: Function) {
     try {
-      const docRef = doc(this.FS, 'customers', id);
+      const docRef = doc(this.FS, 'customer', id);
       const result = await getDoc(docRef);
       const customer = { ...result.data(), _id: result.id };
       cb(customer);
@@ -52,27 +47,18 @@ leads:Array<Customer> = []
   }
 
   delete(id: string) {
-    const docRef = doc(this.FS, 'customers', id);
+    const docRef = doc(this.FS, 'customer', id);
     deleteDoc(docRef).catch((error) => console.log(error));
   }
 
   edit(customer: Customer, id: string, cb: Function) {
-    const docRef = doc(this.FS, 'customers', id);
+    const docRef = doc(this.FS, 'customer', id);
     updateDoc(docRef, { ...customer })
       .then(() => cb())
       .catch((error) => console.log(error));
   }
 
-  async getLead(id: string, cb: Function) {
-    try {
-      const docRef = doc(this.FS, 'customers', id);
-      const result = await getDoc(docRef);
-      const customer = { ...result.data(), _id: result.id };
-      cb(customer);
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  
 }
 
 

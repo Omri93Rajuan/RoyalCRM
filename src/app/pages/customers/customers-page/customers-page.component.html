@@ -26,10 +26,10 @@
   </div>
 
   <search-bar
-    [categories]="categories"
-    [array]="customersRowData"
-    (onArrayFiltered)="onSearch($event)"
-  ></search-bar>
+  [categories]="categories"
+  [array]="customersRowData"
+  (onArrayFiltered)="onSearch($event)"
+></search-bar>
 
   <div *ngIf="customers && customers.length; else noCustomers">
     <customers-table
@@ -37,6 +37,7 @@
       [customers]="customers"
       (onDeleteCustomer)="deleteCustomer($event)"
     ></customers-table>
+
 
     <customers-folders
       [customers]="customers"
@@ -48,7 +49,6 @@
       *ngIf="display === 'card'"
     ></customers-cards>
   </div>
-</div>
 
 
   <ng-template #noCustomers>
@@ -60,6 +60,7 @@
     </div>
 
   </ng-template>
+</div>
 
 <ng-template #loader>
   <spinner-loader></spinner-loader>
