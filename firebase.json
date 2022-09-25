@@ -1,7 +1,7 @@
 {
   "hosting": {
     "target": "royal-crm",
-    "public": "dist/royal-crm",
+    "public": "./dist/royal-crm",
     "ignore": [
       "**/.*"
     ],
