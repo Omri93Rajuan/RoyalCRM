@@ -22,29 +22,33 @@
       >
         <tbody>
           <tr>
-            <th class="col-4 col-lg-2">{{ "first name" | titlecase }}</th>
-            <td class="col-8 col-lg-10">
+            <th class="col-12 col-lg-2">{{ "first name" | titlecase }}</th>
+            <td class="col-12 col-lg-10">
               {{ contact.firstName | toUpperCase }}
             </td>
           </tr>
           <tr>
-            <th class="col-4 col-lg-2">{{ "last name" | titlecase }}</th>
-            <td class="col-8 col-lg-10">{{ contact.lastName | titlecase }}</td>
+            <th >{{ "last name" | titlecase }}</th>
+            <td >{{ contact.lastName | titlecase }}</td>
           </tr>
           <tr>
-            <th class="col-4 col-lg-2">{{ "phone" | titlecase }}</th>
-            <td class="col-8 col-lg-10">{{ contact.phone | titlecase }}</td>
+            <th >{{ "phone" | titlecase }}</th>
+            <td >{{ contact.phone | titlecase }}</td>
           </tr>
           <tr>
-            <th class="col-4 col-lg-2">{{ "age" | titlecase }}</th>
-            <td class="col-8 col-lg-10">{{ contact.birthday | age  }}</td>
+            <th >{{ "birthday" | titlecase }}</th>
+            <td >{{ contact.birthday  }}</td>
+          </tr>
+          <tr>
+            <th >{{ "age" | titlecase }}</th>
+            <td >{{ contact.birthday | age  }}</td>
           </tr>
           <tr>
             <th>{{ "mail" | titlecase }}</th>
             <td>{{ contact.email }}</td>
           </tr>
-          <tr *ngIf="contact.address">
-            <th class="col-4 col-lg-2">{{ "address" | titlecase }}</th>
+          <tr class="d-none d-md-table-row" *ngIf="contact.address">
+            <th>{{ "address" | titlecase }}</th>
             <td>
               <table class="table m-0">
                 <thead>
@@ -79,10 +83,42 @@
                   </tr>
                   
                 </tbody>
-             
+
               </table>
             </td>
           </tr>
+          <tr
+              [ngClass]="
+                contact.address.state ? 'd-table-row d-md-none' : 'd-none'
+              "
+            >
+              <th>state</th>
+              <td>{{ contact.address.state }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>country</th>
+              <td>{{ contact.address.country }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>city</th>
+              <td>{{ contact.address.city }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>street</th>
+              <td>{{ contact.address.street }}</td>
+            </tr>
+            <tr class="d-table-row d-md-none">
+              <th>house number</th>
+              <td>{{ contact.address.houseNumber }}</td>
+            </tr>
+            <tr
+              [ngClass]="
+              contact.address.zip !== 0 ? 'd-table-row d-md-none' : 'd-none'
+              "
+            >
+              <th>zip</th>
+              <td>{{ contact.address.zip }}</td>
+            </tr>
           <tr *ngIf="contact.notes">
             <th>{{ "notes" | titlecase }}</th>
             <td>{{ contact.notes }}</td>
@@ -92,6 +128,7 @@
     </div>
   </div>
 </div>
+
 
 <ng-template #noContact>
   <div class="p-2">
