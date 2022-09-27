@@ -32,7 +32,7 @@ export class NewContactComponent{
           zip: event.address.zip,
         },
         birthday: event.birthday,
-        notes : event.birthday,
+        notes:event.notes
 
       };
       this.CS.add(contact, () => this.routerService.navigate(['/contacts']));

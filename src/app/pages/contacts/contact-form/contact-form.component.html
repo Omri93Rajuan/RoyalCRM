@@ -1,7 +1,7 @@
 <form
-  #customerForm="ngForm"
+  #contactForm="ngForm"
   autocomplete="off"
-  (ngSubmit)="onSubmit(customerForm)"
+  (ngSubmit)="onSubmit(contactForm)"
   class="form border rounded p-2"
 >
   <!-- זיהוי -->
@@ -294,7 +294,7 @@
 
     <input
       type="button"
-      (click)="resetForm(customerForm)"
+      (click)="resetForm(contactForm)"
       class="btn btn-secondary ms-3"
       value="{{ 'reset' | titlecase }}"
       role="button"
@@ -304,9 +304,9 @@
     <button
       type="submit"
       class="btn btn-success ms-3"
-      [disabled]="customerForm.form.invalid"
+      [disabled]="contactForm.form.invalid"
     >
-      {{ "add customer" | titlecase }}
+      {{ "submit" | titlecase }}
     </button>
   </div>
 </form>
