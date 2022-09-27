@@ -1,20 +1,14 @@
-<div class="card-group col-12">
+<div class="card-group ">
   <div
     *ngFor="let contact of contacts"
-    class="cursor col-6 col-sm-4 col-md-3 col-xl-2 m-5"
+    class="cursor m-1 card text-white bg-info"
     [routerLink]="['contact-details', contact._id]"
   >
-    <div class="card">
-      <div class="card-body">
-        <h5 class=" bg-dark text-light">
-          {{ contact.firstName + " " + contact.lastName | titlecase }}
-        </h5>
-        <p>{{"Phone: " + contact.phone }}</p>
-        <p>{{"Email: " +contact.email}}</p>
-        <p>{{contact.address.street}}</p>
-
-
+  <div class="card-header"> {{ contact.firstName + " " + contact.lastName | titlecase }}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{"Phone: " + contact.phone }}</h5>
+    <p class="card-text">{{"Email: " +contact.email}}</p>
       </div>
     </div>
   </div>
-</div>
+
