@@ -10,7 +10,7 @@ export class SideNavComponent {
   links: SideNavLink[] = [
     { icon: 'fas fa-users', link: 'customers', text: 'customers' },
     { icon: 'fas fa-address-book', link: 'contacts', text: 'contacts' },
-    { icon: 'fa-solid fa-fire', link: 'leads', text: 'leads' },
+    { icon: 'fa-solid fa-headset', link: 'leads', text: 'leads' },
 
   ];
 }
