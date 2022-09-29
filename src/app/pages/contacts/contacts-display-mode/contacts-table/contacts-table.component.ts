@@ -13,6 +13,7 @@ export class ContactsTableComponent {
   @Input() contacts: Contact[] = [];
   @Output() onDeleteContact = new EventEmitter();
 
+
   constructor(private CS: ContactsService, private router: Router
     ) {}
 
@@ -29,7 +30,7 @@ export class ContactsTableComponent {
   changeLeadStatus(e: MouseEvent,id:string,contact:Contact){
     e.stopPropagation();
     this.CS.editLeadStatus(id,contact,() => this.CS.getAll((contacts: Contact[]) => {
-    this.router.navigate(['/'])
+    this.router.navigate([''])
 
 
     }))

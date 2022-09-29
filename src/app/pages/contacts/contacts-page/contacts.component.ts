@@ -56,8 +56,11 @@ export class ContactsComponent implements OnInit{
       this.dataReceived = true;
       this.unsubscribeGetAll = unsubscribeGetAll;
     });
-setInterval(()=>{this.unsubscribeGetAll();
+setTimeout(()=>{this.unsubscribeGetAll();
+  console.log(1);
+  
 },1000)
+
   }
 
   ngOnDestroy(): void {
