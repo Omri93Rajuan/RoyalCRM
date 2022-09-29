@@ -57,7 +57,6 @@ export class ContactsComponent implements OnInit{
       this.unsubscribeGetAll = unsubscribeGetAll;
     });
 setTimeout(()=>{this.unsubscribeGetAll();
-  console.log(1);
   
 },1000)
 
