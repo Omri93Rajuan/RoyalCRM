@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output,OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Contact } from '../../contacts-page/contacts-interface';
 import { ContactsService } from '../../contacts.service';
 
@@ -12,7 +13,8 @@ export class ContactsTableComponent {
   @Input() contacts: Contact[] = [];
   @Output() onDeleteContact = new EventEmitter();
 
-  constructor(private CS: ContactsService) {}
+  constructor(private CS: ContactsService, private router: Router
+    ) {}
 
   deleteContact(e: MouseEvent, id: string) {
     e.stopPropagation();
@@ -27,7 +29,9 @@ export class ContactsTableComponent {
   changeLeadStatus(e: MouseEvent,id:string,contact:Contact){
     e.stopPropagation();
     this.CS.editLeadStatus(id,contact,() => this.CS.getAll((contacts: Contact[]) => {
-      this.contacts = contacts;
+    this.router.navigate(['/'])
+
+
     }))
 
     }

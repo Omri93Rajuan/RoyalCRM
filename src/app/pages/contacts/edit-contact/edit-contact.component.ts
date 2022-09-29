@@ -41,6 +41,7 @@ export class EditContactComponent implements OnInit {
       const id = param.get('id');
       this.id = id;
 
+      
       this.CS.getContact(id!, ({ ...contact }: Contact) => {
         this.contact = contact;
         this.birthday = contact.birthday;
