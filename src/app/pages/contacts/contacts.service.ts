@@ -87,7 +87,7 @@ export class ContactsService {
   editLeadStatus(id: string, contact: Contact, cb: Function) {
     const docRef = doc(this.FS, 'contacts', id);
     updateDoc(docRef, {lead: !contact.lead })
-      .then(() => cb())
+      .then(() => cb(),)
       .catch((error) => console.log(error));
   }
 }

@@ -50,15 +50,12 @@ export class ContactsComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.CS.getAll((contacts: Contact[], unsubscribeGetAll: Function) => {
+     this.CS.getAll((contacts: Contact[], unsubscribeGetAll: Function) => {
       this.contactsRowData = contacts;
      this.contacts = this.contactsRowData;
       this.dataReceived = true;
       this.unsubscribeGetAll = unsubscribeGetAll;
-    });
-setTimeout(()=>{this.unsubscribeGetAll();
-  
-},1000)
+    })
 
   }
 

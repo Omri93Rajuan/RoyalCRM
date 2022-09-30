@@ -10,8 +10,10 @@ import { ContactsService } from '../../contacts.service';
   ]
 })
 export class ContactsTableComponent {
-  @Input() contacts: Contact[] = [];
+  @Input() contacts: any = [];
   @Output() onDeleteContact = new EventEmitter();
+  unsubscribeGetAll: Function = () => {};
+
 
 
   constructor(private CS: ContactsService, private router: Router
@@ -28,12 +30,11 @@ export class ContactsTableComponent {
 
 
   changeLeadStatus(e: MouseEvent,id:string,contact:Contact){
+    this.contacts = this.CS.collectionRef
     e.stopPropagation();
     this.CS.editLeadStatus(id,contact,() => this.CS.getAll((contacts: Contact[]) => {
-    this.router.navigate([''])
-
-
+      this.contacts = contacts;
+      this.router.navigate([''])
     }))
-
     }
     }
