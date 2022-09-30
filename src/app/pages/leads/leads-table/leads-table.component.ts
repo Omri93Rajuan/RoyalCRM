@@ -12,7 +12,7 @@ import { Customer } from '../../customers/customers-page/customer-interface';
   ]
 })
 export class LeadsTableComponent  {
-  @Input() contacts: Contact[] = [];
+  @Input() contacts: any = [];
   @Output() onDeleteContact = new EventEmitter();
 
   contactsRowData: Array<Contact> = [];
@@ -22,6 +22,8 @@ export class LeadsTableComponent  {
   constructor(private CS: ContactsService) {}
 
   changeLeadStatus(e: MouseEvent,id:string,contact:Contact){
+    this.contacts = this.CS.collectionRef;
+
     e.stopPropagation();
     this.CS.editLeadStatus(id,contact,() => this.CS.getAllLeads((contacts: Contact[]) => {
       this.contacts = contacts;
